@@ -1,9 +1,10 @@
-import './AuthForm.css'
-import logoWithBg from '../../../public/logo_without_bg.png'
+import './FormHead.css'
+import logoWithBg from '../../../assets/logo_without_bg.png'
 import React from 'react'
+import AuthForm from '../authForm/AuthForm'
 
 
-function AuthForm() {
+function FormHead() {
   return (
     <div className='authFormMain'>
         <div className="authForm">
@@ -19,9 +20,11 @@ function AuthForm() {
             <div className="message">
                 <span>Sign in to continue to Loompanics book store</span>
             </div>
+            <AuthForm />
         </div>
+        
     </div>
   )
 }
 
-export default AuthForm
+export default FormHead

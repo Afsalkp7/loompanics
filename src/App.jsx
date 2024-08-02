@@ -1,11 +1,11 @@
 import './App.css'
-import AuthForm from './components/registerAndLogin/AuthForm'
+import FormHead from './components/registerAndLogin/formHead/FormHead'
 
 function App() {
 
   return (
     <>
-      <AuthForm />
+      <FormHead />
     </>
   )
 }
