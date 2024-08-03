@@ -21,7 +21,7 @@ import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { flexStyle, inputFocus } from "./AuthForm";
 
-export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegister, isOtpSended, setIsOtpSended }) {
+export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegister, isOtpSended, setIsOtpSended, needToChange, setNeedToChange }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 

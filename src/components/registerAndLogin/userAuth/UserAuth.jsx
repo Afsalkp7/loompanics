@@ -5,7 +5,8 @@ import AuthForm from "../authForm/AuthForm.jsx";
 function UserAuth() {
   const [isRegister, setIsRegister] = useState(false);
   const [isForgot, setIsForgot] = useState(false);
-  const [isOtpSended, setIsOtpSended] = useState(true);
+  const [isOtpSended, setIsOtpSended] = useState(false);
+  const [needToChange,setNeedToChange] = useState(false)
   return (
     <>
       <FormHead
@@ -15,6 +16,8 @@ function UserAuth() {
         setIsRegister={setIsRegister}
         isOtpSended={isOtpSended}
         setIsOtpSended={setIsOtpSended}
+        needToChange={needToChange}
+        setNeedToChange={setNeedToChange}
       />
     </>
   );

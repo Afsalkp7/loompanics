@@ -4,6 +4,7 @@ import React from "react";
 import AuthForm from "../authForm/AuthForm.jsx";
 import Forgot from "../authForm/Forgot.jsx";
 import OtpBox from "../authForm/OtpBox.jsx";
+import ChangePassword from "../authForm/ChangePassword.jsx";
 
 function FormHead({
   isForgot,
@@ -12,6 +13,8 @@ function FormHead({
   setIsRegister,
   isOtpSended,
   setIsOtpSended,
+  needToChange,
+  setNeedToChange,
 }) {
   return (
     <div className="authFormMain">
@@ -30,6 +33,8 @@ function FormHead({
               ? "Find your account..."
               : isOtpSended
               ? "Verification"
+              : needToChange
+              ? "Reset password"
               : "Welcome Back!"}
           </span>
         </div>
@@ -41,6 +46,8 @@ function FormHead({
               ? "Enter your email and we send a OTP to reset your password"
               : isOtpSended
               ? "Check your E-mail for OTP"
+              : needToChange
+              ? "Enter a new password"
               : "Create new account to explore Loompanics"}
           </span>
         </div>
@@ -50,27 +57,43 @@ function FormHead({
             setIsForgot={setIsForgot}
             isRegister={isRegister}
             setIsRegister={setIsRegister}
-            isOtpSended = {isOtpSended}
+            isOtpSended={isOtpSended}
             setIsOtpSended={setIsOtpSended}
+            needToChange={needToChange}
+            setNeedToChange={setNeedToChange}
           />
-        ):isOtpSended?
-          <OtpBox 
+        ) : isOtpSended ? (
+          <OtpBox
             isForgot={isForgot}
             setIsForgot={setIsForgot}
             isRegister={isRegister}
             setIsRegister={setIsRegister}
-            isOtpSended = {isOtpSended}
+            isOtpSended={isOtpSended}
             setIsOtpSended={setIsOtpSended}
-          
+            needToChange={needToChange}
+            setNeedToChange={setNeedToChange}
           />
-        : (
+        ) : needToChange ? (
+          <ChangePassword
+            isForgot={isForgot}
+            setIsForgot={setIsForgot}
+            isRegister={isRegister}
+            setIsRegister={setIsRegister}
+            isOtpSended={isOtpSended}
+            setIsOtpSended={setIsOtpSended}
+            needToChange={needToChange}
+            setNeedToChange={setNeedToChange}
+          />
+        ) : (
           <AuthForm
             isForgot={isForgot}
             setIsForgot={setIsForgot}
             isRegister={isRegister}
             setIsRegister={setIsRegister}
-            isOtpSended = {isOtpSended}
+            isOtpSended={isOtpSended}
             setIsOtpSended={setIsOtpSended}
+            needToChange={needToChange}
+            setNeedToChange={setNeedToChange}
           />
         )}
       </div>

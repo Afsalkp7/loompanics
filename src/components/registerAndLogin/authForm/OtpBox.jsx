@@ -1,6 +1,6 @@
 'use client'
 
-import { Center, Heading } from '@chakra-ui/react'
+import { Box, Center, Heading, Link, Text } from '@chakra-ui/react'
 import {
   Button,
   FormControl,
@@ -47,6 +47,22 @@ export default function OtpBox({isRegister,setIsRegister,isForgot,setIsForgot,is
             Verify
           </Button>
         </Stack>
+        <Stack spacing={10} pt={2}>
+               <Stack
+                direction={{ base: "column", sm: "row" }}
+                align={"start"}
+                justify={"space-between"}
+              >
+                <Text color={"black"}>
+                  Not yet received ? 
+                  <Link textDecoration={"underline"}>Resend</Link>
+                </Text>
+                <Text color={"black"}>
+                  <Link onClick={()=>setIsForgot(!isForgot)}>Back</Link>
+                </Text>
+              </Stack>
+              
+            </Stack>
       </Stack>
     </Flex>
   )
