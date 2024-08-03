@@ -21,7 +21,7 @@ import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { flexStyle, inputFocus } from "./AuthForm";
 
-export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegister }) {
+export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegister, isOtpSended, setIsOtpSended }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -101,7 +101,7 @@ export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegist
             )}
 
             <Stack spacing={10} pt={2}>
-              <Stack
+              {!isRegister ? <Stack
                 direction={{ base: "column", sm: "row" }}
                 align={"start"}
                 justify={"space-between"}
@@ -110,7 +110,7 @@ export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegist
                 <Text color={"black"}>
                   <Link onClick={()=>setIsForgot(!isForgot)} textDecoration={"underline"}>Forgot password?</Link>
                 </Text>
-              </Stack>
+              </Stack>:''}
               <Button
                 loadingText="Submitting"
                 size="lg"
@@ -153,7 +153,7 @@ export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegist
                   color={"Black"}
                   textDecoration={"underline"}
                   fontWeight={"bold"}
-                  onClick={() => setIsRegister(!isRegister)}
+                  onClick={() => setIsRegister(!isRegister) }
                 >
                   {isRegister ? "Login Here" : "Create Account"}
                 </Link>
