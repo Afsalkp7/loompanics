@@ -1,27 +1,12 @@
-import {
-  Flex,
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Stack,
-  Button,
-  Text,
-  Link,
-  useColorModeValue,
-  border,
-  Checkbox,
-  Divider,
-  Image,
+import { Flex, Box, FormControl, FormLabel, Input, InputGroup, InputRightElement, Stack, Button, Text, Link, useColorModeValue, border, Checkbox, Divider, Image, FormHelperText,
 } from "@chakra-ui/react";
 import googleIcon from "../../../assets/Logo-google-icon.png";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { flexStyle, inputFocus } from "./AuthForm";
 
-export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegister, isOtpSended, setIsOtpSended, needToChange, setNeedToChange }) {
+
+export default function AuthForm({ isForgot, setIsForgot, isRegister, setIsRegister, isOtpSended, setIsOtpSended, needToChange, setNeedToChange }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -34,6 +19,7 @@ export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegist
               <FormControl id="firstName" isRequired>
                 <FormLabel>Name</FormLabel>
                 <Input type="text" width={"100%"} sx={inputFocus} />
+                <FormHelperText>We'll never share your email.</FormHelperText>
               </FormControl>
             ) : (
               ""
@@ -101,16 +87,25 @@ export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegist
             )}
 
             <Stack spacing={10} pt={2}>
-              {!isRegister ? <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
-              >
-                <Checkbox>Remember me</Checkbox>
-                <Text color={"black"}>
-                  <Link onClick={()=>setIsForgot(!isForgot)} textDecoration={"underline"}>Forgot password?</Link>
-                </Text>
-              </Stack>:''}
+              {!isRegister ? (
+                <Stack
+                  direction={{ base: "column", sm: "row" }}
+                  align={"start"}
+                  justify={"space-between"}
+                >
+                  <Checkbox>Remember me</Checkbox>
+                  <Text color={"black"}>
+                    <Link
+                      onClick={() => setIsForgot(!isForgot)}
+                      textDecoration={"underline"}
+                    >
+                      Forgot password?
+                    </Link>
+                  </Text>
+                </Stack>
+              ) : (
+                ""
+              )}
               <Button
                 loadingText="Submitting"
                 size="lg"
@@ -123,29 +118,32 @@ export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegist
                 {isRegister ? "Sign up" : "Login"}
               </Button>
             </Stack>
-            {!isRegister?
-             <Stack spacing={1} align="center">
-             <Flex align="center">
-               <Divider borderColor="gray.300" />
-               <Text mx={4} mt={2} fontWeight="bold">
-                 Or
-               </Text>
-               <Divider borderColor="gray.300" />
-             </Flex>
-             <Button
-               leftIcon={
-                 <Image src={googleIcon} alt="Google Logo" boxSize="20px" />
-               }
-               colorScheme="google"
-               color="black"
-               width="100%"
-               maxW="300px"
-               justifyContent="center"
-             >
-               Sign in with Google
-             </Button>
-           </Stack>:''}
-           
+            {!isRegister ? (
+              <Stack spacing={1} align="center">
+                <Flex align="center">
+                  <Divider borderColor="gray.300" />
+                  <Text mx={4} mt={2} fontWeight="bold">
+                    Or
+                  </Text>
+                  <Divider borderColor="gray.300" />
+                </Flex>
+                <Button
+                  leftIcon={
+                    <Image src={googleIcon} alt="Google Logo" boxSize="20px" />
+                  }
+                  colorScheme="google"
+                  color="black"
+                  width="100%"
+                  maxW="300px"
+                  justifyContent="center"
+                >
+                  Sign in with Google
+                </Button>
+              </Stack>
+            ) : (
+              ""
+            )}
+
             <Stack pt={6}>
               <Text align={"center"}>
                 {isRegister ? "Have an account ? " : "New member ? "}
@@ -153,7 +151,7 @@ export default function AuthForm({isForgot, setIsForgot, isRegister, setIsRegist
                   color={"Black"}
                   textDecoration={"underline"}
                   fontWeight={"bold"}
-                  onClick={() => setIsRegister(!isRegister) }
+                  onClick={() => setIsRegister(!isRegister)}
                 >
                   {isRegister ? "Login Here" : "Create Account"}
                 </Link>

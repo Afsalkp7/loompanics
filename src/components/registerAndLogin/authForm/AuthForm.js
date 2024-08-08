@@ -3,7 +3,6 @@ export const inputFocus = {
         borderColor: 'black',
         boxShadow: 'none'
     }
-
 }
 
 export const flexStyle = {
