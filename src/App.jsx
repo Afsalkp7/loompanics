@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/homePage/home/Home';
 import Layout from './Layout';
 import UserAuth from './components/registerAndLogin/userAuth/UserAuth';
+import PrivateRoute from './components/registerAndLogin/privateRoute/PrivateRoute';
+import PublicRoute from './components/registerAndLogin/privateRoute/PublicRoute';
 
 
 function App() {
@@ -15,13 +17,21 @@ function App() {
           <Route
             path="/"
             element={
-                <Home />
+
+              <PrivateRoute >
+                <Home /> 
+              </PrivateRoute>
+                
             }
           />
           <Route 
             path="/login" 
             element={
-              <UserAuth />
+
+              <PublicRoute >
+                <UserAuth />
+              </PublicRoute>
+             
             }
              />
           

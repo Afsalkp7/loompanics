@@ -1,39 +1,69 @@
-"use client";
-
-import { Box, Center, Heading, Link, Text } from "@chakra-ui/react";
-import {
-  Button,
-  FormControl,
-  Flex,
-  Input,
-  Stack,
-  useColorModeValue,
-  HStack,
-} from "@chakra-ui/react";
+import { useState } from "react";
+import { Box, Center, Heading, Link, Text, Button, FormControl, Flex, Stack, HStack } from "@chakra-ui/react";
 import { PinInput, PinInputField } from "@chakra-ui/react";
-import { otpBoxStyle } from "./AuthForm";
-
+import axios from "axios";
+import { toast } from "react-toastify";
 export default function OtpBox({
-  isRegister,
-  setIsRegister,
+  email,
+  setIsOtpSended,
   isForgot,
   setIsForgot,
-  isOtpSended,
-  setIsOtpSended,
+  onOtpVerificationSuccess, // New prop
 }) {
+  const [otp, setOtp] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleOtpChange = (value) => {
+    setOtp(value);
+  };
+
+  const handleVerifyOtp = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth/verify-otp", {
+        email,
+        otp,
+      });
+
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
+        if (onOtpVerificationSuccess) {
+          toast.success(response.data.msg || "Email verified")
+          onOtpVerificationSuccess(); 
+        }
+      } else {
+        console.error("Verification failed:", response.data.msg);
+        toast.error(response.data.msg)
+      }
+    } catch (error) {
+      console.error("OTP Verification Error:", error.response ? error.response.data : error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleResendOtp = async () => {
+    try {
+      await axios.post("http://localhost:4000/api/auth/resend-otp", { email });
+      console.log("OTP Resent successfully");
+    } catch (error) {
+      console.error("Error Resending OTP:", error.response ? error.response.data : error.message);
+    }
+  };
+
   return (
     <Flex align={"center"} justify={"center"}>
       <Stack w={"full"} maxW={"sm"} spacing={6}>
         <FormControl>
           <Center>
             <HStack>
-              <PinInput>
-                <PinInputField sx={otpBoxStyle} />
-                <PinInputField sx={otpBoxStyle} />
-                <PinInputField sx={otpBoxStyle} />
-                <PinInputField sx={otpBoxStyle} />
-                <PinInputField sx={otpBoxStyle} />
-                <PinInputField sx={otpBoxStyle} />
+              <PinInput value={otp} onChange={handleOtpChange}>
+                <PinInputField />
+                <PinInputField />
+                <PinInputField />
+                <PinInputField />
+                <PinInputField />
+                <PinInputField />
               </PinInput>
             </HStack>
           </Center>
@@ -45,6 +75,8 @@ export default function OtpBox({
             _hover={{
               bg: "gray.900",
             }}
+            isLoading={loading}
+            onClick={handleVerifyOtp}
           >
             Verify
           </Button>
@@ -56,7 +88,10 @@ export default function OtpBox({
             justify={"space-between"}
           >
             <Text color={"black"}>
-              Not yet received ?<Link textDecoration={"underline"}>Resend</Link>
+              Not yet received?
+              <Link textDecoration={"underline"} onClick={handleResendOtp}>
+                Resend
+              </Link>
             </Text>
             <Text color={"black"}>
               <Link onClick={() => setIsForgot(!isForgot)}>Back</Link>
