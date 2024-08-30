@@ -1,7 +1,62 @@
-.sloped-square {
-    width: 100vw; /* Overall width */
-    height: 500px; /* Overall height */
-    background-color: #3498db; /* Background color of the div */
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .hero {
+    display: flex;
+    justify-content: space-between; /* Adjusts space between text and image */
+    align-items: center; /* Ensures both the text and image are centered vertically */
+    padding: 10px 100px 10px 100px; 
+    background: #74788d52;/* Optional: adds padding around the hero section */
+  }
+  
+  .heroText {
+    flex: 1; /* Ensures text takes up available space */
+    display: flex;
+    flex-direction: column; /* Arranges text vertically */
+    justify-content: center; /* Vertically centers text within its section */
+    align-items: flex-start; /* Aligns text to the start */
+    max-width: 50%; /* Prevents text from stretching too wide */
+  }
+  
+  .heroTextFirst {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0px; /* Adds space between text elements */
+  }
+  
+  .heroTextSecond {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+  
+  .heroTextThird {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 0px;
+  }
+  
+  .heroTextBtn {
+    background: #000;
+    color: #b3b1b1;
+    padding: 10px 20px; /* Adjust padding to better fit button size */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Optional: rounds button corners */
+  }
+  
+  .HeroImage {
+    flex: 1; /* Ensures image takes up available space */
+    display: flex;
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center; /* Centers the image vertically */
+  }
+  
+  .HeroImage img {
+    max-width: 100%; /* Ensures image does not overflow */
+    height: auto; /* Maintains aspect ratio */
   }
   
