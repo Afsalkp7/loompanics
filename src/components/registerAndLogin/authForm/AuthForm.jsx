@@ -1,66 +1,104 @@
-import { 
-  Flex, Box, FormControl, FormLabel, Input, InputGroup, InputRightElement, Stack, Button, Text, 
-  Link, useColorModeValue, Checkbox, Divider, Image, FormHelperText 
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Stack,
+  Button,
+  Text,
+  Link,
+  useColorModeValue,
+  Checkbox,
+  Divider,
+  Image,
+  FormHelperText,
 } from "@chakra-ui/react";
 import googleIcon from "../../../assets/Logo-google-icon.png";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { flexStyle, inputFocus } from "./AuthForm";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, registerUser } from '../../../redux/authSlice';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, registerUser } from "../../../redux/authSlice";
 import { toast } from "react-toastify";
-import { useNavigate } from 'react-router-dom';
-// Define the validation schema with Yup
-const validationSchema = Yup.object({
-  firstName: Yup.string().when('isRegister', {
-    is: true,
-    then: Yup.string().min(3, 'Name must be at least 3 characters long').required('Name is required'),
-  }),
-  email: Yup.string().email('Invalid email address').required('Email is required'),
-  phoneNumber: Yup.string().when('isRegister', {
-    is: true,
-    then: Yup.string().matches(/^\d{10}$/, 'Phone number must be exactly 10 digits').required('Phone number is required'),
-  }),
-  password: Yup.string()
-    .required('Password is required')
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 'Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character'),
-  confirmPassword: Yup.string().when('isRegister', {
-    is: true,
-    then: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Confirm password is required'),
-  }),
-});
+import { useNavigate } from "react-router-dom";
 
-export default function AuthForm({ isForgot, setIsForgot, isRegister, setIsRegister , isOtpSended, setIsOtpSended, setEmail}) {
+// Define the validation schema with Yup
+const validationSchema = (isRegister) =>
+  Yup.object({
+    firstName: Yup.string()
+      .min(3, "Name must be at least 3 characters long")
+      .when([], {
+        is: () => isRegister,
+        then: (schema) => schema.required("Name is required"),
+        otherwise: (schema) => schema.notRequired(),
+      }),
+    email: Yup.string().email("Invalid email address").required("Email is required"),
+    phoneNumber: Yup.string()
+      .matches(/^\d{10}$/, "Phone number must be exactly 10 digits")
+      .when([], {
+        is: () => isRegister,
+        then: (schema) => schema.required("Phone number is required"),
+        otherwise: (schema) => schema.notRequired(),
+      }),
+    password: Yup.string()
+      .required("Password is required")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character"
+      ),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .when([], {
+        is: () => isRegister,
+        then: (schema) => schema.required("Confirm password is required"),
+        otherwise: (schema) => schema.notRequired(),
+      }),
+  });
+
+export default function AuthForm({
+  isForgot,
+  setIsForgot,
+  isRegister,
+  setIsRegister,
+  isOtpSended,
+  setIsOtpSended,
+  setEmail,
+}) {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.auth);
+  const { loading } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
+
   const handleSubmit = async (values, actions) => {
-    if (isRegister) {
-      dispatch(registerUser(values))
-        .then((response) => {
-          toast.success(response.payload.msg);
-          if (response.payload.openOtp) {
-            setEmail(response.payload.email);
-            setIsOtpSended(true);
-          }
-        })
-        .catch((error) => {
-          toast.error(error.message || "Registration failed");
-        });
-    } else {
-      dispatch(loginUser(values))
-        .then((response) => {
-          navigate("/")
-        })
-        .catch((error) => {
-          toast.error(error.message || "Login failed");
-        });
+    // Destructure confirmPassword from values and include it in the submission
+  
+    try {
+      let response;
+  
+      if (isRegister) {
+        // Include confirmPassword in the payload if needed
+        
+        response = await dispatch(registerUser(values));
+        if (response.payload.openOtp) {
+          setEmail(response.payload.email);
+          setIsOtpSended(true);
+        }
+      } else {
+        response = await dispatch(loginUser(values));
+        navigate("/");
+      }
+  
+    } catch (error) {
+      toast.error(error.message || (isRegister ? "Registration failed" : "Login failed"));
+    } finally {
+      actions.setSubmitting(false);
     }
-    actions.setSubmitting(false);
   };
 
   return (
@@ -69,13 +107,13 @@ export default function AuthForm({ isForgot, setIsForgot, isRegister, setIsRegis
         <Box rounded={"lg"} bg={useColorModeValue("white", "gray.700")}>
           <Formik
             initialValues={{
-              firstName: '',
-              email: '',
-              phoneNumber: '',
-              password: '',
-              confirmPassword: '',
+              firstName: "",
+              email: "",
+              phoneNumber: "",
+              password: "",
+              confirmPassword: "",
             }}
-            validationSchema={validationSchema}
+            validationSchema={() => validationSchema(isRegister)}
             onSubmit={handleSubmit}
           >
             {({ isSubmitting }) => (
@@ -85,7 +123,9 @@ export default function AuthForm({ isForgot, setIsForgot, isRegister, setIsRegis
                     <FormControl id="firstName">
                       <FormLabel>Name</FormLabel>
                       <Field name="firstName">
-                        {({ field }) => <Input {...field} type="text" width={"100%"} sx={inputFocus} />}
+                        {({ field }) => (
+                          <Input {...field} type="text" width={"100%"} sx={inputFocus} />
+                        )}
                       </Field>
                       <ErrorMessage name="firstName" component={FormHelperText} />
                     </FormControl>
@@ -94,7 +134,9 @@ export default function AuthForm({ isForgot, setIsForgot, isRegister, setIsRegis
                   <FormControl id="email">
                     <FormLabel>Email address</FormLabel>
                     <Field name="email">
-                      {({ field }) => <Input {...field} type="email" width={"100%"} sx={inputFocus} />}
+                      {({ field }) => (
+                        <Input {...field} type="email" width={"100%"} sx={inputFocus} />
+                      )}
                     </Field>
                     <ErrorMessage name="email" component={FormHelperText} />
                   </FormControl>
@@ -103,7 +145,9 @@ export default function AuthForm({ isForgot, setIsForgot, isRegister, setIsRegis
                     <FormControl id="phoneNumber">
                       <FormLabel>Phone number</FormLabel>
                       <Field name="phoneNumber">
-                        {({ field }) => <Input {...field} type="text" width={"100%"} sx={inputFocus} />}
+                        {({ field }) => (
+                          <Input {...field} type="text" width={"100%"} sx={inputFocus} />
+                        )}
                       </Field>
                       <ErrorMessage name="phoneNumber" component={FormHelperText} />
                     </FormControl>
@@ -151,9 +195,11 @@ export default function AuthForm({ isForgot, setIsForgot, isRegister, setIsRegis
                         <InputRightElement h={"full"}>
                           <Button
                             variant={"ghost"}
-                            onClick={() => setShowConfirmPassword(
-                              (showConfirmPassword) => !showConfirmPassword
-                            )}
+                            onClick={() =>
+                              setShowConfirmPassword(
+                                (showConfirmPassword) => !showConfirmPassword
+                              )
+                            }
                           >
                             {showConfirmPassword ? <ViewIcon /> : <ViewOffIcon />}
                           </Button>
@@ -165,8 +211,20 @@ export default function AuthForm({ isForgot, setIsForgot, isRegister, setIsRegis
 
                   <Stack spacing={10} pt={2}>
                     {!isRegister && (
-                      <Stack direction={{ base: "column", sm: "row" }} align={"start"} justify={"space-between"}>
-                        <Checkbox>Remember me</Checkbox>
+                      <Stack
+                        direction={{ base: "column", sm: "row" }}
+                        align={"start"}
+                        justify={"space-between"}
+                      >
+                        
+                        <Text color={"black"}>
+                          <Link
+                            onClick={() => setIsForgot(!isForgot)}
+                            textDecoration={"underline"}
+                          >
+                            Verify email?
+                          </Link>
+                        </Text>
                         <Text color={"black"}>
                           <Link
                             onClick={() => setIsForgot(!isForgot)}
@@ -223,7 +281,7 @@ export default function AuthForm({ isForgot, setIsForgot, isRegister, setIsRegis
                         fontWeight={"bold"}
                         onClick={() => setIsRegister(!isRegister)}
                       >
-                        {isRegister ? "Login Here" : "Create Account"}
+                        {isRegister ? "Login Here" : "Register Here"}
                       </Link>
                     </Text>
                   </Stack>

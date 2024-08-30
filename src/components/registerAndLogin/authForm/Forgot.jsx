@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { flexStyle, inputFocus } from "./AuthForm";
 import { Box, Button, Flex, FormControl, FormLabel, Input, Link, Stack, useColorModeValue, useToast } from "@chakra-ui/react";
-import axios from 'axios'; // Import axios for API calls
+import API from "../../../utils/api";
 
 function Forgot({
   isRegister,
@@ -18,7 +18,7 @@ function Forgot({
   const handleSubmit = async () => {
     try {
       // Send request to forgot password API
-      const response = await axios.post('http://localhost:4000/api/auth/forgot', { email: localEmail });
+      const response = await API.post('/auth/forgot', { email: localEmail });
 
       // Handle successful response
       if (response.status === 200) {

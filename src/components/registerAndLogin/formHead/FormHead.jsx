@@ -56,19 +56,7 @@ function FormHead() {
               : "Create new account to explore Loompanics"}
           </span>
         </div>
-        {isForgot ? (
-          <Forgot
-            isForgot={isForgot}
-            setIsForgot={setIsForgot}
-            isRegister={isRegister}
-            setIsRegister={setIsRegister}
-            isOtpSended={isOtpSended}
-            setIsOtpSended={setIsOtpSended}
-            needToChange={needToChange}
-            setNeedToChange={setNeedToChange}
-            setEmail={setEmail}
-          />
-        ) : isOtpSended ? (
+        {isOtpSended ? (
           <OtpBox
             isForgot={isForgot}
             setIsForgot={setIsForgot}
@@ -82,6 +70,7 @@ function FormHead() {
           />
         ) : needToChange ? (
           <ChangePassword
+            email={email}
             isForgot={isForgot}
             setIsForgot={setIsForgot}
             isRegister={isRegister}
@@ -91,7 +80,20 @@ function FormHead() {
             needToChange={needToChange}
             setNeedToChange={setNeedToChange}
           />
-        ) : (
+        ) :
+        isForgot ? (
+          <Forgot
+            isForgot={isForgot}
+            setIsForgot={setIsForgot}
+            isRegister={isRegister}
+            setIsRegister={setIsRegister}
+            isOtpSended={isOtpSended}
+            setIsOtpSended={setIsOtpSended}
+            needToChange={needToChange}
+            setNeedToChange={setNeedToChange}
+            setEmail={setEmail}
+          />
+        ) :  (
           <AuthForm
             isForgot={isForgot}
             setIsForgot={setIsForgot}

@@ -1,21 +1,22 @@
 // src/redux/authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import API from '../utils/api';
 
 // Async thunk for user registration
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
-  async ({ firstName, email, phoneNumber, password }, { rejectWithValue }) => {
+  async ({ firstName, email, phoneNumber, password , confirmPassword }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:4000/api/auth/register', {
+      const response = await API.post('/auth/register', {
         firstName,
         email,
         phoneNumber,
         password,
+        confirmPassword
       });
       toast.success(response.data.msg || "Registration successful");
-      return response.data.token; // return the token from the response
+      return response.data; 
     } catch (error) {
       toast.error(error.response.data.msg || "Registration failed");
       return rejectWithValue(error.response.data);
@@ -28,7 +29,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:4000/api/auth/login', {
+      const response = await API.post('/auth/login', {
         email,
         password,
       });

@@ -1,10 +1,22 @@
 import axios from 'axios';
 
+// Create an Axios instance with the base URL
 const API = axios.create({
-  baseURL: 'http://localhost:5001',
+  baseURL: 'http://localhost:4000/api/',
 });
 
-
-API.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+// Add a request interceptor to set the Authorization header only if a token exists
+API.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`; // Set the Authorization header
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error); // Handle the error
+  }
+);
 
 export default API;
