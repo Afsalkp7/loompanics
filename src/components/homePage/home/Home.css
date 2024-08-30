@@ -1,0 +1,7 @@
+.sloped-square {
+    width: 100vw; /* Overall width */
+    height: 500px; /* Overall height */
+    background-color: #3498db; /* Background color of the div */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  }
+  

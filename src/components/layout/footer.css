@@ -1,0 +1,103 @@
+.footerMain {
+  background-color: #000000;
+  padding: 100px;
+  color: #ffffff;
+}
+
+.footerTop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 20px;
+  border-top: 1px solid white;
+  padding-top: 30px;
+}
+
+.footerlogoDiv {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+}
+
+.footerlogoDiv img {
+  max-width: 100px;
+  height: auto;
+}
+
+.dataDiv {
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.footerBottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(190, 190, 190, 0.5);
+  padding-top: 30px;
+}
+
+.menuDiv {
+  flex: 1;
+  display: flex;
+  justify-content: flex-starts; 
+  align-items: center;
+}
+
+.copyDiv {
+  flex: 1; 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10px;
+}
+.links {
+  margin-top: 30px;
+}
+.address ul {
+  list-style: none;
+  gap: 20px;
+  font-size: 16px;
+  color: #b3b1b1;
+}
+
+.links ul {
+  list-style: none;
+  display: inline-flex;
+  gap: 20px;
+}
+
+.menuDiv ul {
+  list-style: none;
+  display: inline-flex;
+  gap: 30px;
+  font-size: 13px;
+  color: #b3b1b1;
+}
+
+.copyDiv span {
+  font-size: 13px;
+  color: #b3b1b1;
+}
+
+@media screen and (max-width: 844px) {
+  .footerMain {
+    padding: 50px 20px 50px 20px; 
+}
+
+@media screen and (max-width: 648px) {
+  .menuDiv ul {
+    list-style: none;
+    display: inline-block;
+    gap: 30px;
+    font-size: 13px;
+    color: #b3b1b1;
+    padding-right: 20px;
+  }
+}
+}
