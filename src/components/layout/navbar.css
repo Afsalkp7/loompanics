@@ -1,47 +1,57 @@
-.navbarMain{
-    width: 100vw;
+.navbarMain {
+    width: 99vw;
     height: 80px;
-    background: #ffffff;
+    background: #ffffff !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    transition: z-index 1s ease;
 }
-.socialDiv{
-    flex: 3; /* 2 parts of the available space */
+
+.navbarMain.scrolled {
+    z-index: 100;
+}
+
+.socialDiv {
+    flex: 3;
     display: flex;
-    justify-content: center; /* Center content horizontally if needed */
+    justify-content: center;
     align-items: center;
     background: #ffffff;
     height: 100%;
 }
-.logoDiv{
-    flex: 1; /* 1 part of the available space */
+
+.logoDiv {
+    flex: 1;
     display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     background: #ffffff;
     height: 100%;
     z-index: 10;
 }
-.navListDiv{
-    flex: 2; /* 2 parts of the available space */
-    display: flex;
-    justify-content: end; /* Center content horizontally if needed */
-    align-items: center;
-    background: #ffffff;
-    height: 100%;
 
-}
-.navItemDiv{
-    flex: 1; /* 2 parts of the available space */
+.navListDiv {
+    flex: 2;
     display: flex;
-    justify-content: center; /* Center content horizontally if needed */
+    justify-content: end;
     align-items: center;
     background: #ffffff;
     height: 100%;
 }
 
-.socialDiv ul{
+.navItemDiv {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    height: 100%;
+}
+
+.socialDiv ul {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -49,47 +59,50 @@
     gap: 20px;
 }
 
-.socialDiv ul li{
+.socialDiv ul li {
     font-size: larger;
     color: #b9b2b2;
 }
 
-.logoDiv img{
+.logoDiv img {
     width: 100px;
 }
-.logoDiv span{
+
+.logoDiv span {
     font-size: 30px;
     font-weight: 400;
 }
 
-.navListDiv ul{
+.navListDiv ul {
     padding: 0;
     margin: 0;
     list-style: none;
     display: inline-flex;
     gap: 10px;
 }
-.navListDiv ul li{
+
+.navListDiv ul li {
     font-size: small;
     color: #000000;
 }
 
-.navItemDiv ul{
-    padding: 0;
-    margin: 0;
+.navItemDiv ul {
     list-style: none;
     display: inline-flex;
     gap: 10px;
 }
-.navItemDiv ul li{
+
+.navItemDiv ul li {
     font-size: 25px;
     color: #000000;
 }
-.bottonNav{
+
+.bottonNav {
     width: 100vw;
     align-items: center;
     text-align: center;
 }
+
 .bottonNav ul {
     padding: 0;
     margin: 0;
@@ -97,75 +110,63 @@
     display: inline-flex;
     gap: 10px;
 }
-.bottonNav ul li{
+
+.bottonNav ul li {
     font-size: smaller;
     color: #000000;
 }
 
-@media screen and (max-width:755px){
-    .navListDiv{
+@media screen and (max-width: 755px) {
+    .navListDiv {
         display: none;
     }
     .socialDiv {
         display: none;
     }
-    .logoDiv{
+    .logoDiv {
         justify-content: start;
         padding-left: 30px;
     }
-    .navItemDiv{
+    .navItemDiv {
         justify-content: end;
         padding-right: 30px;
     }
 }
-@media screen and (max-width:483px){
-    .logoDiv{
+
+@media screen and (max-width: 483px) {
+    .logoDiv {
         justify-content: start;
         padding-left: 10px;
     }
-    .navItemDiv{
+    .navItemDiv {
         justify-content: end;
         padding-right: 30px;
     }
-    .logoDiv img{
+    .logoDiv img {
         width: 70px;
     }
-    .logoDiv span{
+    .logoDiv span {
         font-size: 25px;
         font-weight: 400;
     }
-    .navItemDiv ul{
+    .navItemDiv ul {
         padding: 0;
         margin: 0;
         list-style: none;
         display: inline-flex;
         gap: 10px;
     }
-    .navItemDiv ul li{
+    .navItemDiv ul li {
         font-size: 20px;
-    }    
-    .navItemDiv{
+    }
+    .navItemDiv {
         justify-content: end;
         padding-right: 30px;
     }
 }
-@media screen and (max-width:483px){
-    .logoDiv span{
-        font-size: 30px;
-        font-weight: 400;
-    }
-    .bottonNav ul {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        display: block;
-        text-align: start;
-        padding-left: 30px;
-        gap: 10px;
-    }
-}
-@media screen and (max-width:364px){
-    .logoDiv span{
+
+@media screen and (max-width: 364px) {
+    .logoDiv span {
         display: none;
     }
 }
