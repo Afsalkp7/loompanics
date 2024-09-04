@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // Create an Axios instance with the base URL
 const API = axios.create({
-  baseURL: 'http://localhost:4000/api/',
+  baseURL: 'https://loompanics-backend.vercel.app/api/',
+  withCredentials: true,
 });
 
 // Add a request interceptor to set the Authorization header only if a token exists

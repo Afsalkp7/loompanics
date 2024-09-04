@@ -1,14 +1,19 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet , useLocation } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 
 const Layout = () => {
+  const location = useLocation();
+
+  const hideNavbarRoutes = ['/login', '/register', '/auth']; // Add paths for UserAuth components
+  const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
+
   return (
     <>
-    <Navbar />
+    {shouldShowNavbar && <Navbar />}
     <Outlet />
-    <Footer />
+    {shouldShowNavbar && <Footer />}
     </>
   )
 }
