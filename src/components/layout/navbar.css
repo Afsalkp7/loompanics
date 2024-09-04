@@ -101,6 +101,9 @@
     width: 100vw;
     align-items: center;
     text-align: center;
+    position: fixed;
+    top: 70px;
+    z-index: 100;
 }
 
 .bottonNav ul {

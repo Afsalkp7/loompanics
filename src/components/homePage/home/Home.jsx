@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import bookReadingKids from '../../../assets/bookReadingKids.png'
+import CategorySection from "./CategorySection";
 function Home() {
   return (
     <>
@@ -18,6 +19,7 @@ function Home() {
           <img src={bookReadingKids} alt="Book reading kids" />
         </div>
       </div>
+      <CategorySection />
     </>
   );
 }

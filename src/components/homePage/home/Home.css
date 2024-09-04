@@ -63,3 +63,106 @@
     height: auto; /* Maintains aspect ratio */
   }
   
+  @media screen and (max-width: 1068px) {
+    .heroTextFirst {
+        font-size: 14px;
+    }
+    .heroTextSecond {
+      font-size: 35px;
+    }
+    .heroTextThird {
+      font-size: 12px;
+    }
+  }
+  @media screen and (max-width: 960px) {
+    .heroTextFirst {
+        font-size: 12px;
+    }
+    .heroTextSecond {
+      font-size: 30px;
+    }
+    .heroTextThird {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (max-width: 860px) {
+    .hero {
+      /* display: block; */
+      flex-direction: column-reverse;
+      clip-path: polygon(0 0,0 100% , 100% 100% , 100% 0);
+    }
+    .heroText {
+      flex: 1; /* Ensures text takes up available space */
+      display: flex;
+      flex-direction: column; /* Arranges text vertically */
+      justify-content: center; /* Vertically centers text within its section */
+      align-items: center; /* Aligns text to the start */
+      max-width: 100%; /* Prevents text from stretching too wide */
+    }
+    .HeroImage img {
+      max-width: 100%; /* Ensures image does not overflow */
+      height: 300px; /* Maintains aspect ratio */
+    }
+  }
+  @media screen and (max-width: 526px) {
+    .heroTextFirst {
+      font-size: 10px;
+      font-weight: bold;
+      margin-bottom: 0px; /* Adds space between text elements */
+    }
+    
+    .heroTextSecond {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 0px;
+    }
+    
+    .heroTextThird {
+      font-size: 10px;
+      font-weight: 400;
+      margin-bottom: 0px;
+    }
+    .heroTextBtn {
+      background: #000;
+      color: #b3b1b1;
+      padding: 10px 20px; /* Adjust padding to better fit button size */
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px; /* Optional: rounds button corners */
+    }
+    
+  }
+
+  @media screen and (max-width: 514px) {
+    .HeroImage img {
+      max-width: 100%; /* Ensures image does not overflow */
+      height: auto; /* Maintains aspect ratio */
+    }
+    .heroText {
+    /* Ensures text takes up available space */
+      display: block; /* Arranges text vertically */
+      justify-content: center; /* Vertically centers text within its section */
+      align-items: center; /* Aligns text to the start */
+      max-width: 100%; /* Prevents text from stretching too wide */
+    }
+    .heroTextFirst {
+      font-size: 10px;
+      font-weight: bold;
+    }
+    
+    .heroTextSecond {
+      font-size: 25px;
+      font-weight: bold;
+    }
+    
+    .heroTextThird {
+      font-size: 10px;
+      font-weight: 400;
+      margin-bottom: 0px;
+    }
+    .hero{
+      padding: 0px 20px 10px 20px; 
+    }
+  }
