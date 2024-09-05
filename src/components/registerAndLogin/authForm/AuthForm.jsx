@@ -249,7 +249,7 @@ export default function AuthForm({
                         <Text color={"black"}>
                           <Link
                             onClick={() => setIsForgot(!isForgot)}
-                            textDecoration={"underline"}
+                            
                           >
                             Verify email?
                           </Link>
@@ -257,7 +257,6 @@ export default function AuthForm({
                         <Text color={"black"}>
                           <Link
                             onClick={() => setIsForgot(!isForgot)}
-                            textDecoration={"underline"}
                           >
                             Forgot password?
                           </Link>
