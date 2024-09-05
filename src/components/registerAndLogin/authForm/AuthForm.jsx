@@ -122,10 +122,9 @@ export default function AuthForm({
                 <Stack spacing={{ base: 0, md: 1 }}>
                   {isRegister && (
                     <FormControl id="firstName">
-                      <FormLabel>Name</FormLabel>
                       <Field name="firstName">
                         {({ field }) => (
-                          <Input {...field} type="text" width={"100%"} sx={inputFocus} />
+                          <Input {...field} type="text" placeholder="Enter User Name" width={"100%"} sx={inputFocus} />
                         )}
                       </Field>
                       <ErrorMessage name="firstName" component={FormHelperText} />
@@ -133,10 +132,10 @@ export default function AuthForm({
                   )}
 
                   <FormControl id="email">
-                    <FormLabel>Email address</FormLabel>
+                    
                     <Field name="email">
                       {({ field }) => (
-                        <Input {...field} type="email" width={"100%"} sx={inputFocus} />
+                        <Input {...field} type="email" placeholder="Enter Email" width={"100%"} sx={inputFocus} />
                       )}
                     </Field>
                     <ErrorMessage name="email" component={FormHelperText} />
@@ -144,10 +143,9 @@ export default function AuthForm({
 
                   {isRegister && (
                     <FormControl id="phoneNumber">
-                      <FormLabel>Phone number</FormLabel>
                       <Field name="phoneNumber">
                         {({ field }) => (
-                          <Input {...field} type="text" width={"100%"} sx={inputFocus} />
+                          <Input {...field} type="text" placeholder="Enter Phone Number" width={"100%"} sx={inputFocus} />
                         )}
                       </Field>
                       <ErrorMessage name="phoneNumber" component={FormHelperText} />
@@ -155,7 +153,6 @@ export default function AuthForm({
                   )}
 
                   <FormControl id="password">
-                    <FormLabel>Password</FormLabel>
                     <InputGroup>
                       <Field name="password">
                         {({ field }) => (
@@ -164,6 +161,7 @@ export default function AuthForm({
                             type={showPassword ? "text" : "password"}
                             width={"100%"}
                             sx={inputFocus}
+                            placeholder="Enter Password"
                           />
                         )}
                       </Field>
@@ -181,7 +179,6 @@ export default function AuthForm({
 
                   {isRegister && (
                     <FormControl id="confirmPassword">
-                      <FormLabel>Confirm password</FormLabel>
                       <InputGroup>
                         <Field name="confirmPassword">
                           {({ field }) => (
@@ -190,6 +187,7 @@ export default function AuthForm({
                               type={showConfirmPassword ? "text" : "password"}
                               width={"100%"}
                               sx={inputFocus}
+                              placeholder="Re enter password"
                             />
                           )}
                         </Field>
