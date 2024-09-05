@@ -6,6 +6,7 @@ import Layout from './Layout';
 import UserAuth from './components/registerAndLogin/userAuth/UserAuth';
 import PrivateRoute from './components/registerAndLogin/privateRoute/PrivateRoute';
 import PublicRoute from './components/registerAndLogin/privateRoute/PublicRoute';
+import About from './components/aboutPage/About';
 
 
 function App() {
@@ -20,6 +21,16 @@ function App() {
 
               <PrivateRoute >
                 <Home /> 
+              </PrivateRoute>
+                
+            }
+          />
+          <Route
+            path="/about"
+            element={
+
+              <PrivateRoute >
+                <About /> 
               </PrivateRoute>
                 
             }

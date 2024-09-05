@@ -1,17 +1,18 @@
 .navbarMain {
     width: 99vw;
     height: 80px;
-    background: #ffffff !important;
+    background:transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     top: 0;
-    transition: z-index 1s ease;
+    transition: background 1s ease;
+    z-index: 10;
 }
 
 .navbarMain.scrolled {
-    z-index: 100;
+    background: #ffffff !important;
 }
 
 .socialDiv {
@@ -19,7 +20,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #ffffff;
+    background: transparent;
     height: 100%;
 }
 
@@ -28,7 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #ffffff;
+    background: transparent;
     height: 100%;
     z-index: 10;
 }
@@ -38,7 +39,7 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    background: #ffffff;
+    background: transparent;
     height: 100%;
 }
 
@@ -47,7 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #ffffff;
+    background: transparent;
     height: 100%;
 }
 
@@ -97,16 +98,17 @@
     color: #000000;
 }
 
-.bottonNav {
+.bottomNav {
     width: 100vw;
     align-items: center;
     text-align: center;
     position: fixed;
     top: 70px;
     z-index: 100;
+    background-color: #ffffff;
 }
 
-.bottonNav ul {
+.bottomNav ul {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -114,9 +116,10 @@
     gap: 10px;
 }
 
-.bottonNav ul li {
+.bottomNav ul li {
     font-size: smaller;
     color: #000000;
+    font-weight: 600;
 }
 
 @media screen and (max-width: 755px) {
@@ -173,3 +176,4 @@
         display: none;
     }
 }
+

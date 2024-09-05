@@ -8,10 +8,21 @@ import { IoCartOutline } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 
 import logo from '../../assets/logo_without_bg.png';
+import { useNavigate } from 'react-router-dom';
+import BottomNav from './BottomNav';
 
 function Navbar() {
   const [isOpenBottomNav, setIsOpenBottomNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const [activeItem, setActiveItem] = useState("HOME");
+  const navigate = useNavigate();
+
+  // Function to handle navigation and setting the active item
+  const handleNavigation = (item, path) => {
+    setActiveItem(item);
+    navigate(path);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,14 +53,7 @@ function Navbar() {
           <span>Loompanics</span>
         </div>
         <div className="navListDiv">
-          {/* Uncomment if needed */}
-          {/* <ul>
-            <li>HOME</li>
-            <li>BOOKS</li>
-            <li>ABOUT US</li>
-            <li>CONTACT US</li>
-            <li>MEMBERSHIP</li>
-          </ul> */}
+          
         </div>
         <div className="navItemDiv">
           <ul>
@@ -60,15 +64,7 @@ function Navbar() {
         </div>
       </div>
       {isOpenBottomNav && (
-        <div className='bottonNav'>
-          <ul>
-            <li>HOME</li>
-            <li>BOOKS</li>
-            <li>ABOUT US</li>
-            <li>CONTACT US</li>
-            <li>MEMBERSHIP</li>
-          </ul>
-        </div>
+        <BottomNav isOpenBottomNav={isOpenBottomNav} setIsOpenBottomNav={setIsOpenBottomNav} scrolled={scrolled}/>
       )}
     </>
   );
