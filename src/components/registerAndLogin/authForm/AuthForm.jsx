@@ -2,7 +2,6 @@ import {
   Flex,
   Box,
   FormControl,
-  FormLabel,
   Input,
   InputGroup,
   InputRightElement,
@@ -11,9 +10,6 @@ import {
   Text,
   Link,
   useColorModeValue,
-  Checkbox,
-  Divider,
-  Image,
   FormHelperText,
 } from "@chakra-ui/react";
 import googleIcon from "../../../assets/Logo-google-icon.png";
@@ -49,7 +45,7 @@ const validationSchema = (isRegister) =>
       .required("Password is required")
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character"
+        "Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character"
       ),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
@@ -79,7 +75,7 @@ export default function AuthForm({
     console.log("Form values:", values); // Check form values
     try {
       let response;
-  
+
       if (isRegister) {
         response = await dispatch(registerUser(values));
         console.log("Registration response:", response); // Check response
@@ -92,7 +88,6 @@ export default function AuthForm({
         console.log("Login response:", response); // Check response
         navigate("/");
       }
-  
     } catch (error) {
       console.error("Error during form submission:", error); // Check errors
       toast.error(error.message || (isRegister ? "Registration failed" : "Login failed"));
@@ -100,7 +95,6 @@ export default function AuthForm({
       actions.setSubmitting(false);
     }
   };
-  
 
   return (
     <Flex sx={flexStyle}>
@@ -119,36 +113,65 @@ export default function AuthForm({
           >
             {({ isSubmitting }) => (
               <Form>
-                <Stack spacing={{ base: 3 , md: 2.5 }}>
+                <Stack spacing={{ base: 3, md: 2.5 }}>
                   {isRegister && (
                     <FormControl id="firstName">
                       <Field name="firstName">
                         {({ field }) => (
-                          <Input {...field} type="text" placeholder="Enter User Name" width={"100%"} sx={inputFocus} />
+                          <Input
+                            {...field}
+                            type="text"
+                            placeholder="Enter User Name"
+                            width={"100%"}
+                            sx={inputFocus}
+                          />
                         )}
                       </Field>
-                      <ErrorMessage name="firstName" component={FormHelperText} />
+                      <ErrorMessage
+                        name="firstName"
+                        component={FormHelperText}
+                        style={{ color: "red", textAlign: "start" }} // Custom styles for error messages
+                      />
                     </FormControl>
                   )}
 
                   <FormControl id="email">
-                    
                     <Field name="email">
                       {({ field }) => (
-                        <Input {...field} type="email" placeholder="Enter Email" width={"100%"} sx={inputFocus} />
+                        <Input
+                          {...field}
+                          type="email"
+                          placeholder="Enter Email"
+                          width={"100%"}
+                          sx={inputFocus}
+                        />
                       )}
                     </Field>
-                    <ErrorMessage name="email" component={FormHelperText} />
+                    <ErrorMessage
+                      name="email"
+                      component={FormHelperText}
+                      style={{ color: "red", textAlign: "start" }} // Custom styles for error messages
+                    />
                   </FormControl>
 
                   {isRegister && (
                     <FormControl id="phoneNumber">
                       <Field name="phoneNumber">
                         {({ field }) => (
-                          <Input {...field} type="text" placeholder="Enter Phone Number" width={"100%"} sx={inputFocus} />
+                          <Input
+                            {...field}
+                            type="text"
+                            placeholder="Enter Phone Number"
+                            width={"100%"}
+                            sx={inputFocus}
+                          />
                         )}
                       </Field>
-                      <ErrorMessage name="phoneNumber" component={FormHelperText} />
+                      <ErrorMessage
+                        name="phoneNumber"
+                        component={FormHelperText}
+                        style={{ color: "red", textAlign: "start" }} // Custom styles for error messages
+                      />
                     </FormControl>
                   )}
 
@@ -174,7 +197,11 @@ export default function AuthForm({
                         </Button>
                       </InputRightElement>
                     </InputGroup>
-                    <ErrorMessage name="password" component={FormHelperText} />
+                    <ErrorMessage
+                      name="password"
+                      component={FormHelperText}
+                      style={{ color: "red", textAlign: "start" }} // Custom styles for error messages
+                    />
                   </FormControl>
 
                   {isRegister && (
@@ -187,7 +214,7 @@ export default function AuthForm({
                               type={showConfirmPassword ? "text" : "password"}
                               width={"100%"}
                               sx={inputFocus}
-                              placeholder="Re enter password"
+                              placeholder="Re-enter password"
                             />
                           )}
                         </Field>
@@ -204,7 +231,11 @@ export default function AuthForm({
                           </Button>
                         </InputRightElement>
                       </InputGroup>
-                      <ErrorMessage name="confirmPassword" component={FormHelperText} />
+                      <ErrorMessage
+                        name="confirmPassword"
+                        component={FormHelperText}
+                        style={{ color: "red", textAlign: "start" }} // Custom styles for error messages
+                      />
                     </FormControl>
                   )}
 
@@ -215,7 +246,6 @@ export default function AuthForm({
                         align={"start"}
                         justify={"space-between"}
                       >
-                        
                         <Text color={"black"}>
                           <Link
                             onClick={() => setIsForgot(!isForgot)}
@@ -247,29 +277,6 @@ export default function AuthForm({
                       {isRegister ? "Sign up" : "Login"}
                     </Button>
                   </Stack>
-                  {/* {!isRegister && (
-                    <Stack spacing={1} align="center">
-                      <Flex align="center">
-                        <Divider borderColor="gray.300" />
-                        <Text mx={4} mt={2} fontWeight="bold">
-                          Or
-                        </Text>
-                        <Divider borderColor="gray.300" />
-                      </Flex>
-                      <Button
-                        leftIcon={
-                          <Image src={googleIcon} alt="Google Logo" boxSize="20px" />
-                        }
-                        colorScheme="google"
-                        color="black"
-                        width="100%"
-                        maxW="300px"
-                        justifyContent="center"
-                      >
-                        Sign in with Google
-                      </Button>
-                    </Stack>
-                  )} */}
 
                   <Stack pt={6}>
                     <Text align={"center"}>
