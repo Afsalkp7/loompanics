@@ -1,0 +1,54 @@
+.browseBookSection {
+    background: #74788d52;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 100px;
+}
+
+.browse500 {
+    font-weight: 700;
+}
+
+.exploreButton {
+    background: #000;
+    color: #ffffffdc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px; /* Add margin for spacing */
+    cursor: pointer; /* Change cursor to pointer for better UX */
+}
+
+.browseSubHead {
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 10px; /* Add some spacing between the header and subheading */
+}
+
+.browseHead {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+    .browseBookSection {
+        padding: 50px 20px; /* Adjust padding for smaller devices */
+    }
+
+    .browseHead {
+        font-size: 24px; /* Reduce the font size for smaller screens */
+    }
+
+    .browseSubHead {
+        font-size: 14px; /* Adjust subheading font size */
+    }
+
+    .exploreButton {
+        padding: 8px; /* Adjust padding for smaller screens */
+    }
+}

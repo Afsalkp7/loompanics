@@ -2,6 +2,9 @@ import React from "react";
 import "./Home.css";
 import bookReadingKids from '../../../assets/bookReadingKids.png'
 import CategorySection from "./CategorySection";
+import BooksSection from "./BooksSection";
+import HowToRead from "./HowToRead";
+import BrowseBooksSection from "./BrowseBooksSection";
 function Home() {
   return (
     <>
@@ -20,6 +23,9 @@ function Home() {
         </div>
       </div>
       <CategorySection />
+      <BooksSection />
+      <HowToRead />
+      <BrowseBooksSection />
     </>
   );
 }

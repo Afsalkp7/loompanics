@@ -1,0 +1,86 @@
+.booksHead {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+.booksHeadMain {
+    font-size: 30px;
+    font-weight: 500;
+    color: #74788d;
+}
+.BooksHeadSub {
+    font-size: 16px;
+    font-weight: 400;
+}
+.booksSection{
+    background: #74788d52;
+    
+}
+/* Main container taking full width and height, centering its content */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;/* Light background for contrast */
+  }
+  
+  /* Inner container with a white background and centered content */
+  .inner-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 3px;/* Slight shadow for depth */
+  }
+  
+  /* Container for the button chain, positioned relative for the highlight */
+  .button-chain {
+    position: relative;
+    display: flex;
+    /* flex-wrap: wrap; */
+    padding: 0px;
+    justify-content: center; /* Center the buttons within the inner container */
+  }
+  
+  /* Highlight effect that moves behind the selected button */
+  .highlight {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #000;
+    transition: left 0.3s ease, width 0.3s ease; /* Smooth sliding effect */
+    z-index: 0;
+    border-radius: 5px;
+  }
+  
+  /* Base button styling */
+  .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #000;
+    cursor: pointer;
+    z-index: 1; /* Above the highlight */
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  /* Active button text color */
+  .button.active {
+    color: #fff;
+  }
+  
+
+  @media screen and (max-width: 724px) {
+    .button-chain {
+        position: relative;
+        display: block;
+    }
+    .highlight {
+        position: relative;
+    }
+    .button.active {
+        background: #000;
+    }
+  }

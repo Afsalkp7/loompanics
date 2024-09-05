@@ -1,3 +1,4 @@
+
 .categoryHead {
     width: 100%;
     text-align: center;
@@ -10,4 +11,5 @@
 .headSub {
     font-size: 16px;
     font-weight: 400;
+    color : #74788d;
 }

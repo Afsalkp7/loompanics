@@ -1,0 +1,160 @@
+.howToReadMain {
+    display: flex;
+    justify-content: space-between; /* Adjusts space between text and image */
+    align-items: center; /* Ensures both the text and image are centered vertically */
+    padding: 50px 100px 50px 100px; 
+}
+
+.howToReadHeading {
+    font-size: 40px;
+    font-weight: 400;
+}
+.howToReadSubHeading {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+
+.vertical-circles-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start; /* Align items to the start of each row */
+    gap: 10px; /* Space between rows */
+    padding: 18px;
+  }
+  
+  /* Row containing each circle and its label */
+  .circle-label-row {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between circle and label */
+  }
+  
+  /* Circle styling */
+  .circle {
+    width: 50px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: #555;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Active circle styling */
+  .circle.active {
+    background-color: #000;
+    color: #fff;
+    transform: scale(1.1);
+  }
+  
+  /* Label styling */
+  .label {
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .subLabel {
+    font-size: 12px;
+    color: #333;
+    font-weight: 300;
+  }
+  
+  /* Vertical dotted line connecting the circles */
+  .dotted-line {
+    width: 2px;
+    height: 20px;
+    margin-left: 19px; /* Centered below the circles */
+    border-left: 2px dotted #ddd;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Active dotted line styling */
+  .dotted-line.active-line {
+    border-color: #000;
+  }
+
+  @media screen and (max-width: 1013px) {
+    .circle {
+        width: 60px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ddd;
+        color: #555;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+      .howToReadHeading {
+        font-size: 30px;
+        font-weight: 400;
+    }
+      
+  }
+  @media screen and (max-width: 775PX) {
+    
+    .howToReadMain {
+        flex-direction: column-reverse;
+        justify-content: space-between; /* Adjusts space between text and image */
+        align-items: center; /* Ensures both the text and image are centered vertically */
+        padding: 50px 50px 50px 50px; 
+    }
+    .howToReadImage{
+        width: 400px;
+    }
+  }
+  @media screen and (max-width: 472px) {
+    .circle {
+        width: 90px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ddd;
+        color: #555;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+    .howToReadMain {
+        justify-content: space-between; /* Adjusts space between text and image */
+        align-items: center; /* Ensures both the text and image are centered vertically */
+        padding: 50px 50px 50px 50px; 
+    }
+    .howToReadImage{
+        width: 350px;
+    }
+    .howToReadHeading {
+        font-size: 25px;
+        font-weight: 400;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .circle {
+        width: 100px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ddd;
+        color: #555;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+    .howToReadMain {
+        justify-content: space-between; /* Adjusts space between text and image */
+        align-items: center; /* Ensures both the text and image are centered vertically */
+        padding: 50px 10px 50px 10px; 
+    }
+    .howToReadImage{
+        width: 300px;
+    }
+  }
