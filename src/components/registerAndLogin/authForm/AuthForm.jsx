@@ -76,30 +76,31 @@ export default function AuthForm({
   const navigate = useNavigate();
 
   const handleSubmit = async (values, actions) => {
-    // Destructure confirmPassword from values and include it in the submission
-  
+    console.log("Form values:", values); // Check form values
     try {
       let response;
   
       if (isRegister) {
-        // Include confirmPassword in the payload if needed
-        
         response = await dispatch(registerUser(values));
+        console.log("Registration response:", response); // Check response
         if (response.payload.openOtp) {
           setEmail(response.payload.email);
           setIsOtpSended(true);
         }
       } else {
         response = await dispatch(loginUser(values));
+        console.log("Login response:", response); // Check response
         navigate("/");
       }
   
     } catch (error) {
+      console.error("Error during form submission:", error); // Check errors
       toast.error(error.message || (isRegister ? "Registration failed" : "Login failed"));
     } finally {
       actions.setSubmitting(false);
     }
   };
+  
 
   return (
     <Flex sx={flexStyle}>
