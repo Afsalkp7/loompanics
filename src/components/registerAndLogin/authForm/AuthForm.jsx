@@ -119,7 +119,7 @@ export default function AuthForm({
           >
             {({ isSubmitting }) => (
               <Form>
-                <Stack spacing={{ base: 0, md: 1 }}>
+                <Stack spacing={{ base: 3 , md: 2.5 }}>
                   {isRegister && (
                     <FormControl id="firstName">
                       <Field name="firstName">
@@ -247,7 +247,7 @@ export default function AuthForm({
                       {isRegister ? "Sign up" : "Login"}
                     </Button>
                   </Stack>
-                  {!isRegister && (
+                  {/* {!isRegister && (
                     <Stack spacing={1} align="center">
                       <Flex align="center">
                         <Divider borderColor="gray.300" />
@@ -269,7 +269,7 @@ export default function AuthForm({
                         Sign in with Google
                       </Button>
                     </Stack>
-                  )}
+                  )} */}
 
                   <Stack pt={6}>
                     <Text align={"center"}>

@@ -8,7 +8,7 @@ export const inputFocus = {
 export const flexStyle = {
     align: 'center', 
     justify: 'center', 
-    mt: '0px',
+    mt: '10px',
 }
 
 export const otpBoxStyle = {
