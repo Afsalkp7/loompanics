@@ -52,6 +52,7 @@
 }
 
 .contactLeft {
+    border-radius: 20px;
     flex: 1;
     position: relative; /* Needed for absolute positioning of the blur layer */
     overflow: hidden; /* Ensures blur doesn't overflow its parent */
