@@ -1,0 +1,88 @@
+.contactMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.contactHero {
+    position: relative; /* Position relative to contain the pseudo-element */
+    height: 350px;
+    width: 100%;
+    clip-path: polygon(0% 0%, 0% 70%, 50% 100%, 100% 70%, 100% 0%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold; /* Applies to the main heading */
+    text-align: center;
+    overflow: hidden; /* Ensure pseudo-element stays inside */
+}
+
+.contactHero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../assets/booksLibrary.png') ;
+    filter: blur(2px); /* Adjust blur intensity */
+    z-index: 0; /* Keep it behind the text */
+}
+
+.contactHero > * {
+    position: relative;
+    z-index: 1; /* Ensure text is above the blurred background */
+}
+
+.contactSubHeading {
+    font-weight: 400;
+    font-size: 16px; /* Applies the lighter font weight to the subheading */
+}
+
+.contact {
+    display: flex;
+    padding: 50px;
+
+}
+.contactRight{
+    flex: 1;
+}
+.contactLeft{
+    flex: 1;
+    background-image: url('../../assets/contactbg.png');
+    filter: blur(2px); 
+}
+.loompanicsSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.loompanicsImage{
+    width: 150px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+.loompanicsLinks ul{
+    list-style: none;
+    display: inline-flex;
+    gap: 30px;
+}
+.loompanicsLinks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loompanicsName{
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+}
+.loompanicsDetail{
+    font-size: 16;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+}

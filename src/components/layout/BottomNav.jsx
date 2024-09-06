@@ -9,7 +9,6 @@ function BottomNav({ isOpenBottomNav, setIsOpenBottomNav, scrolled }) {
 
   const handleNavigation = (item, path) => {
     setActiveItem(item);
-    setIsOpenBottomNav(false);
     navigate(path);
   };
 
