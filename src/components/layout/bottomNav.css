@@ -42,3 +42,12 @@
     border-bottom: 2px solid #000; /* Active underline */
   }
   
+  @media screen and (max-width: 585px) {
+    .bottomNav ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: inline-block;
+        gap: 15px;
+      }
+  } 

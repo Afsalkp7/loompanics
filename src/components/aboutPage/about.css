@@ -1,0 +1,235 @@
+.aboutMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.aboutHero {
+    position: relative; /* Position relative to contain the pseudo-element */
+    height: 350px;
+    width: 100%;
+    clip-path: polygon(0% 0%, 0% 70%, 50% 100%, 100% 70%, 100% 0%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold; /* Applies to the main heading */
+    text-align: center;
+    overflow: hidden; /* Ensure pseudo-element stays inside */
+}
+
+.aboutHero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../assets/booksLibrary.png') ;
+    filter: blur(2px); /* Adjust blur intensity */
+    z-index: 0; /* Keep it behind the text */
+}
+
+.aboutHero > * {
+    position: relative;
+    z-index: 1; /* Ensure text is above the blurred background */
+}
+
+.subHeading {
+    font-weight: 400;
+    font-size: 16px; /* Applies the lighter font weight to the subheading */
+}
+
+.aboutSection{
+    display: flex;
+    padding: 50px;
+}
+.aboutLeft{
+    height: auto;
+    flex: 1;
+}
+.aboutRight {
+    flex: 3;
+    padding: 20px;
+}
+
+.aboutRightFirstHeading {
+    font-size: 16px;
+    font-weight: 800;
+}
+.aboutRightFirstParagraph { 
+    font-size: 14px;
+}
+
+.aboutRightFirstParagraph ul li {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.aboutRightFirstParagraph ul{
+    list-style: none;
+}
+
+.meetMindImageSection{
+    height: 220px;
+    width: 100%;
+    background-image: url("../../assets/meetmindimage.png");
+}
+
+.aboutRightMeetMindParagraph{
+    font-size: 14px;
+}
+
+/* Form Container */
+.responsiveForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 100%; /* Adjust based on your design needs */
+  margin: 0 auto; /* Center the form */
+  padding: 20px;
+}
+
+/* Form Group */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full Width Group */
+.fullWidth {
+  width: 100%;
+}
+
+/* Half Width Container for email and subject */
+.halfWidthContainer {
+  display: flex;
+  gap: 20px; /* Gap between the two half-width fields */
+}
+
+/* Half Width Group */
+.halfWidth {
+  flex: 1; /* Equally distribute the space between email and subject */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label Styling */
+label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Input and Textarea Styling */
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #000000;
+}
+
+/* Submit Button Styling */
+.submitButton {
+  padding: 12px 20px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #00000080;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .halfWidthContainer {
+    flex-direction: column;
+  }
+}
+
+.founderSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.founderImage{
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+.founderLinks ul{
+    list-style: none;
+    display: inline-flex;
+    gap: 30px;
+}
+.founderLinks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.founderName{
+    font-size: 20px;
+    font-weight: 900;
+}
+.founderDetail{
+    font-size: 16;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+}
+.loompanicsSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.loompanicsImage{
+    width: 150px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+.loompanicsLinks ul{
+    list-style: none;
+    display: inline-flex;
+    gap: 30px;
+}
+.loompanicsLinks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loompanicsName{
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+}
+.loompanicsDetail{
+    font-size: 16;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+}
+@media screen and (max-width: 716px) {
+    .aboutSection{
+        flex-direction: column;
+    }
+    .aboutRight{
+        padding-top: 50px
+    }
+}
+@media screen and (max-width: 433px) {
+    .aboutSection{
+        padding: 20px;
+    }
+}
