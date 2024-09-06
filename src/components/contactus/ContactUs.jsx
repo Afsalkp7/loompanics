@@ -35,8 +35,7 @@ function ContactUs() {
     onSubmit: async (values, { resetForm }) => {
       try {
         const response = await API.post('/contact', values);
-       
-            toast.success(response)
+        toast.success('Message sended successfully')
         resetForm(); // Reset form fields after successful submission
       } catch (error) {
         // Show error toast notification
