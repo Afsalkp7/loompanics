@@ -3,8 +3,7 @@ import './contactus.css';
 import { MdLocationPin, MdOutlineCall, MdOutlineMailOutline } from 'react-icons/md';
 import { IoIosGlobe } from 'react-icons/io';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';// Import ToastContainer and toast
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
+import * as Yup from 'yup';
 import logo from '../../assets/logo_without_bg.png';
 import API from '../../utils/api';
 import { toast } from 'react-toastify';
