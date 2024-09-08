@@ -26,7 +26,7 @@ export const login = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const response = await API.post('/api/user/login', formData);
-      return response.data;
+      return response.data.token;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -53,9 +53,9 @@ const authSlice = createSlice({
       .addCase(signup.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.user = action.payload.result;
-        state.token = action.payload.token;
+        state.token = action.payload;
         localStorage.setItem('user', JSON.stringify(action.payload.result));
-        localStorage.setItem('token', action.payload.token);
+        localStorage.setItem('token', action.payload);
         API.defaults.headers.common['Authorization'] = `Bearer ${action.payload.token}`;
       })
       .addCase(signup.rejected, (state, action) => {
@@ -68,9 +68,9 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.user = action.payload.result;
-        state.token = action.payload.token;
+        state.token = action.payload;
         localStorage.setItem('user', JSON.stringify(action.payload.result));
-        localStorage.setItem('token', action.payload.token);
+        localStorage.setItem('token', action.payload);
         API.defaults.headers.common['Authorization'] = `Bearer ${action.payload.token}`;
       })
       .addCase(login.rejected, (state, action) => {
