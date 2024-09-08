@@ -78,8 +78,8 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.token = action.payload;
-        console.log(action.payload);
+        state.token = action.payload.token;
+        state.userId = action.payload.user.id;
         
         localStorage.setItem('token', action.payload);
       })
