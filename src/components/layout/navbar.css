@@ -63,6 +63,7 @@
 .socialDiv ul li {
     font-size: larger;
     color: #b9b2b2;
+    cursor: pointer;
 }
 
 .logoDiv img {
@@ -85,6 +86,7 @@
 .navListDiv ul li {
     font-size: small;
     color: #000000;
+    cursor: pointer;
 }
 
 .navItemDiv ul {
@@ -96,6 +98,7 @@
 .navItemDiv ul li {
     font-size: 25px;
     color: #000000;
+    cursor: pointer;
 }
 
 .bottomNav {

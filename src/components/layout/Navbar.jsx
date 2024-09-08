@@ -6,6 +6,7 @@ import { TiSocialYoutube } from "react-icons/ti";
 import { HiBars3 } from "react-icons/hi2";
 import { IoCartOutline } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
+import { CiUser } from "react-icons/ci";
 
 import logo from '../../assets/logo_without_bg.png';
 import { useNavigate } from 'react-router-dom';
@@ -57,7 +58,7 @@ function Navbar() {
         </div>
         <div className="navItemDiv">
           <ul>
-            <li><CiSearch /></li>
+            <li onClick={()=>navigate("/user")}><CiUser /></li>
             <li><IoCartOutline /></li>
             <li onClick={() => setIsOpenBottomNav(!isOpenBottomNav)}><HiBars3 /></li>
           </ul>

@@ -8,6 +8,7 @@ import PrivateRoute from "./components/registerAndLogin/privateRoute/PrivateRout
 import PublicRoute from "./components/registerAndLogin/privateRoute/PublicRoute";
 import About from "./components/aboutPage/About";
 import ContactUs from "./components/contactus/ContactUs";
+import UserDetails from "./components/userDetails/UserDetails";
 
 function App() {
   return (
@@ -36,6 +37,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <ContactUs />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/user"
+              element={
+                <PrivateRoute>
+                  <UserDetails />
                 </PrivateRoute>
               }
             />
