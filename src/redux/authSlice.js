@@ -34,7 +34,7 @@ export const loginUser = createAsyncThunk(
         password,
       });
       toast.success(response.data.msg || "Login successful");
-      return response.data.token; // return the token from the response
+      return response.data; // return the token from the response
     } catch (error) {
       toast.error(error.response.data.msg || "Login failed");
       return rejectWithValue(error.response.data);
