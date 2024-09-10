@@ -3,9 +3,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-}
-
-.shopHero {
+  }
+  
+  .shopHero {
     position: relative; /* Position relative to contain the pseudo-element */
     height: 350px;
     width: 100%;
@@ -18,37 +18,37 @@
     font-weight: bold; /* Applies to the main heading */
     text-align: center;
     overflow: hidden; /* Ensure pseudo-element stays inside */
-}
-
-.shopHero::before {
+  }
+  
+  .shopHero::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../../assets/booksLibrary.png') ;
+    background: url('../../assets/booksLibrary.png');
     filter: blur(2px); /* Adjust blur intensity */
     z-index: 0; /* Keep it behind the text */
-}
-
-.shopHero > * {
+  }
+  
+  .shopHero > * {
     position: relative;
     z-index: 1; /* Ensure text is above the blurred background */
-}
-
-.shopSubHeading {
+  }
+  
+  .shopSubHeading {
     font-weight: 400;
     font-size: 16px; /* Applies the lighter font weight to the subheading */
-}
-
-.navbars {
+  }
+  
+  .navbars {
     display: flex;
   }
   
   .sideBar {
     width: 0px;
-    height: 100px;
+    height: 100;
     background: #e2a4a4;
     transition: width 0.5s ease;
   }
@@ -85,7 +85,6 @@
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
-    
   }
   
   .searchInput {
@@ -109,3 +108,50 @@
     display: flex;
     flex: 0.5;
   }
+  
+  .sortOnSmall {
+    margin-right: 10px;
+    display: none;
+  }
+  
+  .searchOnSmall {
+    display: flex;
+    margin-right: 10px;
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .sortOnSmall {
+      display: flex;
+    }
+    .searchOnSmall {
+      display: flex;
+    }
+    .sortBy {
+      display: none;
+    }
+    .searchBox {
+      display: none;
+      transition: display 2s ease;
+    }
+    .openSearch {
+      display: flex;
+    }
+  }
+  
+  /* Main content container that holds topBar and productSection */
+  .mainContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  /* Product Section */
+  .productSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f8f8; /* Example background, adjust as needed */
+  }
+  
