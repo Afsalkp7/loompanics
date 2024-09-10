@@ -49,8 +49,8 @@
   .sideBar {
     width: 0px;
     height: 100;
-    background: #e2a4a4;
-    transition: width 0.5s ease;
+    background: #bbbbb95d;
+    transition: width 0.3s ease;
   }
   
   .openNav {
@@ -79,7 +79,7 @@
   
   .searchBox {
     flex: 2;
-    display: flex;
+    display: none;
     align-items: center;
     background-color: #ffffff;
     border-radius: 5px;
@@ -89,7 +89,6 @@
   
   .searchInput {
     flex: 1;
-    border: none;
     outline: none;
     padding: 5px;
     font-size: 14px;
@@ -107,38 +106,27 @@
     align-items: center;
     display: flex;
     flex: 0.5;
+    padding-right: 20px;
   }
   
   .sortOnSmall {
     margin-right: 10px;
-    display: none;
+    display: flex;
   }
   
   .searchOnSmall {
     display: flex;
     margin-right: 10px;
-    display: none;
+    display: flex;
   }
   
-  @media (max-width: 768px) {
-    .sortOnSmall {
-      display: flex;
-    }
-    .searchOnSmall {
-      display: flex;
-    }
-    .sortBy {
-      display: none;
-    }
-    .searchBox {
-      display: none;
-      transition: display 2s ease;
-    }
-    .openSearch {
-      display: flex;
-    }
+
+
+
+
+  .openSearch {
+    display: flex;
   }
-  
   /* Main content container that holds topBar and productSection */
   .mainContent {
     display: flex;
@@ -152,6 +140,7 @@
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
-    background-color: #f8f8f8; /* Example background, adjust as needed */
+    background-color: #ffffff; /* Example background, adjust as needed */
   }
+  
   
