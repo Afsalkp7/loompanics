@@ -5,6 +5,7 @@ import { FiSearch } from "react-icons/fi";
 import { FaAngleDown } from "react-icons/fa";
 import ProductList from "./ProductList"; // Ensure this component lists your products
 import API from "../../utils/api"; // Your API utility for making requests
+import SortDropdown from "./SortDropdown";
 
 function Shop() {
   const [isOpenSideBar, setIsOpenSideBar] = useState(false);
@@ -12,6 +13,7 @@ function Shop() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showSortDropdown, setShowSortDropdown] = useState(false);
 
   useEffect(() => {
     // Function to fetch products from API
@@ -28,7 +30,27 @@ function Shop() {
 
     fetchProducts();
   }, []); // Empty dependency array to run only on component mount
-
+const handleSort = (sortType) => {
+    // Example sorting logic
+    let sortedProducts = [...products];
+    switch (sortType) {
+      case 'priceAsc':
+        sortedProducts.sort((a, b) => a.originalPrice - b.originalPrice);
+        break;
+      case 'priceDesc':
+        sortedProducts.sort((a, b) => b.originalPrice - a.originalPrice);
+        break;
+      case 'newest':
+        sortedProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        break;
+      case 'rating':
+        sortedProducts.sort((a, b) => b.rating - a.rating);
+        break;
+      default:
+        break;
+    }
+    setProducts(sortedProducts);
+  };
   // Render Loading or Error States
   if (loading) return (
     <>
@@ -129,8 +151,12 @@ function Shop() {
                 >
                   <FiSearch />
                 </div>
-                <div className="sortOnSmall">
+                <div
+                  className="sortOnSmall"
+                  onClick={() => setShowSortDropdown(!showSortDropdown)}
+                >
                   <FaAngleDown />
+                  {showSortDropdown && <SortDropdown onSort={handleSort} />}
                 </div>
                 <span
                   onClick={() => {

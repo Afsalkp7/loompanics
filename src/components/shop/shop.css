@@ -112,6 +112,7 @@
   .sortOnSmall {
     margin-right: 10px;
     display: flex;
+    position: relative;
   }
   
   .searchOnSmall {
