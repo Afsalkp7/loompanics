@@ -32,12 +32,36 @@ function Shop() {
     const fetchProducts = async () => {
       try {
         const response = await API.get("/shop");
-        setProducts(response.data);
-        setFilteredResults(response.data);
+        const data = response.data;
+        
+        setProducts(data);
+        setFilteredResults(data);
 
-        // Assuming categories and authors are part of the response, adjust as needed
-        setCategories([...new Set(response.data.map((p) => p.categoryId))]);
-        setAuthors([...new Set(response.data.map((p) => p.authorId))]);
+        // Create unique categories from the products data
+        const categoryMap = new Map();
+        data.forEach(product => {
+          const { categoryId } = product;
+          if (!categoryMap.has(categoryId._id)) {
+            categoryMap.set(categoryId._id, {
+              ...categoryId
+            });
+          }
+        });
+        setCategories(Array.from(categoryMap.values()));
+
+        // Create unique authors from the products data
+        const authorMap = new Map();
+        data.forEach(product => {
+          const { authorId } = product;
+          const authorKey = `${authorId._id}`; // Use ID for uniqueness
+          if (!authorMap.has(authorKey)) {
+            authorMap.set(authorKey, {
+              ...authorId
+            });
+          }
+        });
+        setAuthors(Array.from(authorMap.values()));
+
       } catch (err) {
         setError("Failed to fetch products.");
       } finally {
