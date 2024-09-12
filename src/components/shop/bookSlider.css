@@ -1,0 +1,52 @@
+
+.explore-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.explore-menu-list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth; /* Adds smooth scrolling effect */
+    padding: 10px 0;
+}
+
+.explore-menu-list::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+}
+
+.explore-menu-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 150px; /* Set a minimum width to create a slider effect */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.explore-menu-list-item:hover {
+    transform: scale(1.05); /* Slightly enlarge the item on hover */
+}
+
+.explore-menu-list-item img {
+    width: 150px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover; /* Ensures the image covers the given area */
+}
+
+.explore-menu-list-item p {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 8px 0 4px;
+    text-align: center;
+}
+
+.explore-menu-list-item span {
+    font-size: 12px;
+    font-weight: 400;
+    color: #555; /* Light color for the price text */
+}

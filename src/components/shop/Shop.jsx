@@ -181,7 +181,16 @@ function Shop() {
     }));
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>
+    {/* Hero Section */}
+    <div className="shopMain">
+        <div className="shopHero">
+          BOOKS <br />
+          <span className="shopSubHeading">Home &gt; Books </span>
+        </div>
+      </div>
+      <ProductList products={products}/>
+  </div>;
   if (error) return <div>{error}</div>;
 
   return (

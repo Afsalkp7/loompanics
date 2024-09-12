@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './productList.css';
+import { useNavigate } from 'react-router-dom';
 import { CiHeart } from "react-icons/ci";
 import RatingComponent from './RatingComponent';
 
@@ -7,7 +8,7 @@ const itemsPerPage = 10; // Number of items to display per page
 
 function ProductList({ products }) {
     const [currentPage, setCurrentPage] = useState(1);
-
+    const navigate = useNavigate()
     // Calculate the start and end indices for slicing the products array
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -34,7 +35,7 @@ function ProductList({ products }) {
         <div>
             <div className="product-list">
                 {paginatedProducts.map((product) => (
-                    <div key={product._id} className="product-card">
+                    <div key={product._id} className="product-card"  onClick={()=>navigate(`/books/${product._id}`)} >
                         <img className='product-image' src={product.primaryImageUrl} alt='product' />
                         
                         <span className='product-category'>

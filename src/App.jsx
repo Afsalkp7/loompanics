@@ -10,6 +10,7 @@ import About from "./components/aboutPage/About";
 import ContactUs from "./components/contactus/ContactUs";
 import UserDetails from "./components/userDetails/UserDetails";
 import Shop from "./components/shop/Shop";
+import ProductSingle from "./components/shop/ProductSingle";
 
 function App() {
   return (
@@ -46,6 +47,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <Shop />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/books/:_id"
+              element={
+                <PrivateRoute>
+                  <ProductSingle />
                 </PrivateRoute>
               }
             />

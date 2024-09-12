@@ -1,0 +1,295 @@
+.shopMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .shopHero {
+    position: relative; /* Position relative to contain the pseudo-element */
+    height: 350px;
+    width: 100%;
+    clip-path: polygon(0% 0%, 0% 70%, 50% 100%, 100% 70%, 100% 0%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold; /* Applies to the main heading */
+    text-align: center;
+    overflow: hidden; /* Ensure pseudo-element stays inside */
+  }
+  
+  .shopHero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../assets/booksLibrary.png');
+    filter: blur(2px); /* Adjust blur intensity */
+    z-index: 0; /* Keep it behind the text */
+  }
+  
+  .shopHero > * {
+    position: relative;
+    z-index: 1; /* Ensure text is above the blurred background */
+  }
+  
+  .shopSubHeading {
+    font-weight: 400;
+    font-size: 16px; /* Applies the lighter font weight to the subheading */
+  }
+  
+.productSingleMain{
+    width: 100%;
+    background: #000;
+    display: flex;
+    padding: 50px;
+}
+.leftSection{
+    background: #d36060;
+    flex: 2 ;
+    max-width: 70%;
+    padding: 30px;
+}
+.rightSection{
+    background: #8df15f;
+    flex: 1;
+    padding: 30px;
+}
+.leftHeroSection{
+    width: 100%;
+    background: #21d1dd;
+    padding: 30px;
+}
+.productImageSection{
+    display: flex;
+    gap: 30px;
+}
+.productImage{
+    width: 150px;
+    height: 200px;
+    border-radius: 10px;
+}
+.productImage img{
+    width: 150px;
+    height: 200px;
+    border-radius: 10px;
+}
+.productDetails{
+    width: 100%;
+    display: flex;
+}
+.price{
+    background: #ffffff;
+    text-align: center;
+    border: 0.2px solid rgba(0, 0, 0, 0.397);
+    height: 60px;
+    width: 100px;
+}
+.price span{
+    font-size: 14px;
+    font-weight: 500;
+}
+.category{
+    background: #ffffff;
+    text-align: center;
+    border: 0.2px solid rgba(0, 0, 0, 0.397);
+    height: 60px;
+    width: 100px;
+}
+.category span{
+    font-size: 12px;
+    font-weight: 600;
+}
+.author{
+    background: #ffffff;
+    text-align: center;
+    border: 0.2px solid rgba(0, 0, 0, 0.397);
+    height: 60px;
+    width: 100px;
+    line-height: 12px;
+}
+.author span{
+    font-size: 12px;
+    font-weight: 600;
+}
+.edition{
+    background: #ffffff;
+    text-align: center;
+    border: 0.2px solid rgba(0, 0, 0, 0.397);
+    height: 60px;
+    width: 100px;
+}
+.edition span{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.bookOverView{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+.rightSection{
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.productTitle{
+    font-size: 18px;
+    font-weight: 600;
+}
+.productAuthor{
+    font-size: 14px;
+    font-weight: 500;
+}
+@media screen and (max-width: 1084px){
+    .productSingleMain{
+        flex-direction: column;
+    }
+    .rightSection{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .leftSection{
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 768px){
+    .productSingleMain{
+        flex-direction: column;
+    }
+    .rightSection{
+        flex-direction: column;
+        justify-content: space-around;
+    }
+   .productImageSection{
+    flex-wrap: wrap;
+   }
+}
+
+.loompanicsSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.loompanicsImage{
+    width: 150px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+.loompanicsLinks ul{
+    list-style: none;
+    display: inline-flex;
+    gap: 30px;
+}
+.loompanicsLinks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loompanicsName{
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+}
+.loompanicsDetail{
+    font-size: 16;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+}
+
+@media screen and (max-width : 466px) {
+    .productSingleMain{
+        padding: 10px;
+    }
+}
+@media screen and (max-width : 342px) {
+    .productSingleMain{
+        padding: 0px;
+    }
+    .leftSection{
+        padding: 10px;
+    }
+    .rightSection{
+        padding: 10px;
+    }
+}
+
+.descriptionSection{
+    width: 100%;
+    background: #4c62dd;
+}
+.descriptionTitle{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 40px;
+}
+.description {
+    font-size: 14px;
+    padding-left: 10px;
+}
+.awardsTitle{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 40px;
+}
+.awards {
+    font-size: 14px;
+    padding-left: 10px;
+}
+.authorTitle{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 40px;
+}
+.authorDescription {
+    font-size: 14px;
+    padding-left: 10px;
+}
+.dataTitle {
+    font-size: 15px;
+    font-weight: 500;
+}
+.dataContent {
+    padding-left: 30px;
+}
+.authorImage{
+    height: 100px;
+    width: auto;
+    border-radius: 10px;
+}
+.authorImage img{
+    height: 100px;
+    width: auto;
+    border-radius: 10px;
+}
+.categoryTitle{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 40px;
+}
+.category {
+    font-size: 14px;
+    padding-left: 10px;
+}
+.booksFrom {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 40px;
+}
+.overView{
+    display: flex;
+    justify-content: center;
+}
+.overContent{
+    text-align: start
+}
