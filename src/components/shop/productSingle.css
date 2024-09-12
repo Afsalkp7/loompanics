@@ -44,24 +44,20 @@
   
 .productSingleMain{
     width: 100%;
-    background: #000;
     display: flex;
     padding: 50px;
 }
 .leftSection{
-    background: #d36060;
     flex: 2 ;
     max-width: 70%;
     padding: 30px;
 }
 .rightSection{
-    background: #8df15f;
     flex: 1;
     padding: 30px;
 }
 .leftHeroSection{
     width: 100%;
-    background: #21d1dd;
     padding: 30px;
 }
 .productImageSection{
@@ -133,8 +129,6 @@
     flex-direction: column;
     gap: 10px;
 }
-
-
 
 .rightSection{
     text-align: center;
@@ -226,7 +220,6 @@
 
 .descriptionSection{
     width: 100%;
-    background: #4c62dd;
 }
 .descriptionTitle{
     font-size: 16px;
@@ -289,7 +282,72 @@
 .overView{
     display: flex;
     justify-content: center;
+    width: 300px;
 }
 .overContent{
     text-align: start
 }
+.overIcon {
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    display: flex;
+    width: 50px;
+    background: #888;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+.overContent {
+    font-size: 16px;
+    font-weight: 500;
+}
+.overViewTite{
+    font-size: 18px;
+    font-weight: 600;
+    text-align: start;
+}
+.overView {
+    display: flex;
+    align-items: flex-start; /* Align items at the top to ensure they start at the same line */
+    gap: 10px; /* Add some space between the icon and the content */
+    width: 300px; 
+  }
+  
+  .overIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px; /* Ensure consistent size for the icon container */
+    background: #88888881;
+    border-radius: 30px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Prevent the icon from shrinking */
+  }
+  
+  .overContent {
+    flex: 1; 
+    text-align: start;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: auto;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  .buttons button{
+    padding: 10px;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+  .buttons :hover{
+    background: #88888888;
+    color : rgb(0, 0, 0)
+  }

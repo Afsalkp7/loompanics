@@ -7,6 +7,16 @@ import {
   MdOutlineMailOutline,
 } from "react-icons/md";
 import { FaBookOpenReader } from "react-icons/fa6";
+import { CiPen } from "react-icons/ci";
+import { SiGradleplaypublisher } from "react-icons/si";
+import { FiDollarSign } from "react-icons/fi";
+import { BiCategory } from "react-icons/bi";
+import { RiPagesLine } from "react-icons/ri";
+import { CiCalendarDate } from "react-icons/ci";
+import { CiHeart } from "react-icons/ci";
+import { IoCartOutline } from "react-icons/io5";
+
+
 
 import { IoIosGlobe } from "react-icons/io";
 import { useParams } from "react-router-dom";
@@ -102,6 +112,12 @@ function ProductSingle() {
                 <span>{product.edition}</span>
               </div>
             </div>
+            <div className="buttons">
+            <button><IoCartOutline /></button>
+            <button><CiHeart /></button>
+            <button>Buy now</button>
+            </div>
+            
           </div>
           <div className="descriptionSection">
             <div className="description">
@@ -183,7 +199,7 @@ function ProductSingle() {
         </div>
         <div className="rightSection">
           <div className="bookOverView">
-            <div>Book Overview</div>
+            <div className="overViewTite">Book Overview</div>
             <div className="overView">
                 <div className="overIcon">
                     <FaBookOpenReader />
@@ -195,56 +211,65 @@ function ProductSingle() {
             </div>
             <div className="overView">
                 <div className="overIcon">
-                    <FaBookOpenReader />
+                    <CiPen />
                 </div>
                 <div className="overContent">
-                    <span>Book Title</span> <br />
-                    <span>{product.title}</span>
+                    <span>Author</span> <br />
+                    <span>{product.authorId.firstName + " " + product.authorId.lastName}</span>
                 </div>
             </div>
             <div className="overView">
                 <div className="overIcon">
-                    <FaBookOpenReader />
+                    <SiGradleplaypublisher />
                 </div>
                 <div className="overContent">
-                    <span>Book Title</span> <br />
-                    <span>{product.title}</span>
+                    <span>Publisher</span> <br />
+                    <span>{product.publisherId.publisherName}</span>
                 </div>
             </div>
             <div className="overView">
                 <div className="overIcon">
-                    <FaBookOpenReader />
+                    <FiDollarSign />
                 </div>
                 <div className="overContent">
-                    <span>Book Title</span> <br />
-                    <span>{product.title}</span>
+                    <span>Original price</span> <br />
+                    <span>{product.originalPrice}</span>
                 </div>
             </div>
             <div className="overView">
                 <div className="overIcon">
-                    <FaBookOpenReader />
+                    <FiDollarSign />
                 </div>
                 <div className="overContent">
-                    <span>Book Title</span> <br />
-                    <span>{product.title}</span>
+                    <span>Discount</span> <br />
+                    <span>{product.discount}</span>
                 </div>
             </div>
             <div className="overView">
                 <div className="overIcon">
-                    <FaBookOpenReader />
+                    <BiCategory />
                 </div>
                 <div className="overContent">
-                    <span>Book Title</span> <br />
-                    <span>{product.title}</span>
+                    <span>Category</span> <br />
+                    <span>{product.categoryId.categoryName}</span>
                 </div>
             </div>
             <div className="overView">
                 <div className="overIcon">
-                    <FaBookOpenReader />
+                    <RiPagesLine />
                 </div>
                 <div className="overContent">
-                    <span>Book Title</span> <br />
-                    <span>{product.title}</span>
+                    <span>Pages</span> <br />
+                    <span>{product.pages}</span>
+                </div>
+            </div>
+            <div className="overView">
+                <div className="overIcon">
+                    <CiCalendarDate />
+                </div>
+                <div className="overContent">
+                    <span>Published date</span> <br />
+                    <span>{product.publicationDate.split("T")[0]}</span>
                 </div>
             </div>
             
