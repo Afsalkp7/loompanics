@@ -222,7 +222,7 @@ function Shop() {
                         value={category._id}
                         onChange={handleCategoryChange}
                       />
-                      {category.categoryName} ({category.books.length})
+                      {category.categoryName} 
                     </label><br /></>
                   ))}
                 </div>
@@ -243,7 +243,7 @@ function Shop() {
                         value={author._id}
                         onChange={handleAuthorChange}
                       />
-                      {author.firstName} {author.lastName} ({author.books.length})
+                      {author.firstName} {author.lastName} 
                     </label><br /></>
                   ))}
                 </div>
@@ -330,9 +330,7 @@ function Shop() {
                   value={searchTerm}
                   onChange={handleSearchChange}
                 />
-                <button className="searchBtn" onClick={() => {}}>
-                  <FiSearch />
-                </button>
+                
               </div>
 
               {/* Product List */}

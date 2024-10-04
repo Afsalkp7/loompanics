@@ -85,18 +85,28 @@ function ProductSingle() {
               {product.authorId.firstName + " " + product.authorId.lastName}
             </span>
             <RatingComponent />
+
             <div className="productDetails">
-              <div className="price">
-                <span>Price</span> <br />
+            <div className="price offerPrice">
+                <span>Offer Price</span> <br />
                 <span>
                   ₹{" "}
-                  {product.discound
-                    ? product.originalPrice - product.discound
+                  {product.discount
+                    ? product.originalPrice - product.discount
                     : product.originalPrice}{" "}
                   /-
                 </span>
               </div>
-              <div className="category">
+              <div className="price ogPrice">
+                <span>Original Price</span> <br />
+                <span>
+                  ₹{" "}
+                  {product.originalPrice}{" "}
+                  /-
+                </span>
+              </div>
+              
+              {/* <div className="category">
                 <span>Category</span>
                 <br />
                 <span>{product.categoryId.categoryName}</span>
@@ -110,8 +120,9 @@ function ProductSingle() {
               <div className="edition">
                 <span>Edition</span> <br />
                 <span>{product.edition}</span>
-              </div>
+              </div> */}
             </div>
+            
             <div className="buttons">
             <button><IoCartOutline /></button>
             <button><CiHeart /></button>

@@ -87,7 +87,8 @@
   }
   
   .searchBox {
-    flex: 2;
+    
+    width: 100%;
     display: none;
     align-items: center;
     background-color: #ffffff;
