@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://loompanics-backend.vercel.app/api/',
+  baseURL: 'http://localhost:4000/api/',
+  // baseURL: 'https://loompanics-backend.vercel.app/api/',
 });
 
 API.interceptors.request.use(
