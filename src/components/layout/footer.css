@@ -80,6 +80,10 @@
   color: #b3b1b1;
 }
 
+.menuDiv ul li:hover{
+  cursor: pointer;
+}
+
 .copyDiv span {
   font-size: 13px;
   color: #b3b1b1;

@@ -17,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 10px;
     margin-top: 20px; /* Add margin for spacing */
     cursor: pointer; /* Change cursor to pointer for better UX */
@@ -51,4 +51,11 @@
     .exploreButton {
         padding: 8px; /* Adjust padding for smaller screens */
     }
+}
+
+.exploreButtonText {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
 }

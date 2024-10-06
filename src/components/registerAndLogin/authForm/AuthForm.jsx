@@ -72,20 +72,17 @@ export default function AuthForm({
   const navigate = useNavigate();
 
   const handleSubmit = async (values, actions) => {
-    console.log("Form values:", values); // Check form values
     try {
       let response;
 
       if (isRegister) {
-        response = await dispatch(registerUser(values));
-        console.log("Registration response:", response); // Check response
+        response = await dispatch(registerUser(values)); // Check response
         if (response.payload.openOtp) {
           setEmail(response.payload.email);
           setIsOtpSended(true);
         }
       } else {
-        response = await dispatch(loginUser(values));
-        console.log("Login response:", response); // Check response
+        response = await dispatch(loginUser(values));// Check response
         navigate("/");
       }
     } catch (error) {

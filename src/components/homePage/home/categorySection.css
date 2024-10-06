@@ -21,7 +21,13 @@
     gap: 60px; /* Large gap between squares */
     padding: 50px 100px; /* Add padding around the container if needed */
   }
-  
+  .skelton-square{
+    min-width: 80vw; /* Max width set to keep only 4 in a row */
+    align-items: center;
+    justify-content: space-between; /* Space elements within the square */
+    text-align: center;
+
+  }
   .category-square {
     flex: 1 1 calc(25% - 50px); /* Each square takes up 25% of the width with gap consideration */
     max-width: calc(25% - 50px); /* Max width set to keep only 4 in a row */
@@ -31,7 +37,7 @@
     align-items: center;
     justify-content: space-between; /* Space elements within the square */
     text-align: center;
-    padding: 10px;
+    padding: 10px; 
   }
   
   .category-name {
@@ -57,6 +63,10 @@
   }
   
   .category-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     font-size: small;
     background: #000;
     color: #f0f0f0;
@@ -110,3 +120,30 @@
         padding: 30px 20px; /* Add padding around the container if needed */
       }
   }
+
+
+
+/* Categories container with animation */
+.categories-container {
+  transition: max-height 0.8s ease-in-out;
+  max-height: 350px; /* Default height */
+  overflow: hidden;
+}
+
+.categories-container.open {
+  max-height: 1000px;
+}
+
+
+.categories-container.closing {
+  max-height: 350px; /* Shrink back to the default height */
+}
+
+.skeleton-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Full width for centering */
+  height: 350px;
+  
+}

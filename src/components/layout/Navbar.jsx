@@ -49,7 +49,7 @@ function Navbar() {
             <li><RiWhatsappFill /></li>
           </ul>
         </div>
-        <div className="logoDiv">
+        <div className="logoDiv" onClick={()=>navigate("/")}>
           <img src={logo} alt="Logo" />
           <span>Loompanics</span>
         </div>
@@ -59,7 +59,7 @@ function Navbar() {
         <div className="navItemDiv">
           <ul>
             <li onClick={()=>navigate("/user")}><CiUser /></li>
-            <li><IoCartOutline /></li>
+            <li className='cart'><IoCartOutline /> <div className="countDiv">5</div> </li>
             <li onClick={() => setIsOpenBottomNav(!isOpenBottomNav)}><HiBars3 /></li>
           </ul>
         </div>

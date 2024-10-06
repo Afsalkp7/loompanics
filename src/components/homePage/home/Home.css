@@ -90,7 +90,8 @@
     .hero {
       /* display: block; */
       flex-direction: column-reverse;
-      clip-path: polygon(0 0,0 100% , 100% 100% , 100% 0);
+      clip-path: polygon(0 0,0 100% , 100% 90% , 100% 0);
+      padding-bottom: 80px !important;
     }
     .heroText {
       flex: 1; /* Ensures text takes up available space */

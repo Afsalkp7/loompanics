@@ -22,9 +22,9 @@ function Shop() {
   const [categories, setCategories] = useState([]);
   const [authors, setAuthors] = useState([]);
   const [accordionState, setAccordionState] = useState({
-    categories: false,
-    authors: false,
-    priceRanges: false,
+    categories: true,
+    authors: true,
+    priceRanges: true,
   });
 
   useEffect(() => {

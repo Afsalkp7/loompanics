@@ -83,4 +83,7 @@
     .button.active {
         background: #000;
     }
+    .booksHead{
+      padding: 0px 30px;
+    }
   }
