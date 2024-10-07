@@ -16,13 +16,14 @@ import { CiCalendarDate } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 
-
-
 import { IoIosGlobe } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import API from "../../utils/api";
 import logo from "../../assets/logo_without_bg.png";
 import BookSlider from "./BookSlider";
+import Skeleton from "react-loading-skeleton";
+import NotFound from "../layout/NotFound";
+import Error from "../layout/Error";
 function ProductSingle() {
   const { _id } = useParams(); // Capture the product ID from the URL
   const [product, setProduct] = useState(null);
@@ -45,9 +46,135 @@ function ProductSingle() {
     fetchProduct();
   }, [_id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-  if (!product) return <div>Product not found.</div>;
+  if (loading) {
+    return (
+      <>
+        <div className="shopMain">
+          <div className="shopHero">
+            BOOKS <br />
+            <span className="shopSubHeading">Home &gt; Books </span>
+          </div>
+        </div>
+        <div className="productSingleMain">
+          <div className="leftSection">
+            <div className="leftHeroSection">
+              <div className="productImageSection">
+                <div className="productImage">
+                  <Skeleton className="skelton"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="rightSection">
+          <div className="bookOverView">
+            <div className="overViewTite">Book Overview</div>
+            <div className="overView">
+              <div className="overIcon">
+                <FaBookOpenReader />
+              </div>
+              <div className="overContent">
+                <span>Book Title</span> <br />
+                <span><Skeleton /></span>
+              </div>
+            </div>
+            <div className="overView">
+              <div className="overIcon">
+                <CiPen />
+              </div>
+              <div className="overContent">
+                <span>Author</span> <br />
+                <span>
+                <Skeleton />
+                </span>
+              </div>
+            </div>
+            <div className="overView">
+              <div className="overIcon">
+                <SiGradleplaypublisher />
+              </div>
+              <div className="overContent">
+                <span>Publisher</span> <br />
+                <span><Skeleton /></span>
+              </div>
+            </div>
+            <div className="overView">
+              <div className="overIcon">
+                <FiDollarSign />
+              </div>
+              <div className="overContent">
+                <span>Original price</span> <br />
+                <span><Skeleton /></span>
+              </div>
+            </div>
+            <div className="overView">
+              <div className="overIcon">
+                <FiDollarSign />
+              </div>
+              <div className="overContent">
+                <span>Discount</span> <br />
+                <span><Skeleton /></span>
+              </div>
+            </div>
+            <div className="overView">
+              <div className="overIcon">
+                <BiCategory />
+              </div>
+              <div className="overContent">
+                <span>Category</span> <br />
+                <span><Skeleton /></span>
+              </div>
+            </div>
+            <div className="overView">
+              <div className="overIcon">
+                <RiPagesLine />
+              </div>
+              <div className="overContent">
+                <span>Pages</span> <br />
+                <span><Skeleton /></span>
+              </div>
+            </div>
+            <div className="overView">
+              <div className="overIcon">
+                <CiCalendarDate />
+              </div>
+              <div className="overContent">
+                <span>Published date</span> <br />
+                <span><Skeleton /></span>
+              </div>
+            </div>
+          </div>
+          <div className="loompanicsSection">
+            <img className="loompanicsImage" alt="logo image" src={logo} />
+            <div className="loompanicsLinks">
+              <span className="loompanicsName">
+                Loompanics Online Books Store
+              </span>
+              <span className="loompanicsDetail">Since July 2017</span>
+              <br />
+              <ul>
+                <li>
+                  <MdOutlineCall />
+                  <span></span>
+                </li>
+                <li>
+                  <MdOutlineMailOutline />
+                </li>
+                <li>
+                  <IoIosGlobe />
+                </li>
+                <li>
+                  <MdLocationPin />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        </div>
+      </>
+    );
+  }
+  if (error) return <div><Error errorMessage={error} /></div>;
+  if (!product) return <div><NotFound/></div>;
 
   return (
     <>
@@ -87,7 +214,7 @@ function ProductSingle() {
             <RatingComponent />
 
             <div className="productDetails">
-            <div className="price offerPrice">
+              <div className="price offerPrice">
                 <span>Offer Price</span> <br />
                 <span>
                   ₹{" "}
@@ -99,13 +226,9 @@ function ProductSingle() {
               </div>
               <div className="price ogPrice">
                 <span>Original Price</span> <br />
-                <span>
-                  ₹{" "}
-                  {product.originalPrice}{" "}
-                  /-
-                </span>
+                <span>₹ {product.originalPrice} /-</span>
               </div>
-              
+
               {/* <div className="category">
                 <span>Category</span>
                 <br />
@@ -122,13 +245,16 @@ function ProductSingle() {
                 <span>{product.edition}</span>
               </div> */}
             </div>
-            
+
             <div className="buttons">
-            <button><IoCartOutline /></button>
-            <button><CiHeart /></button>
-            <button>Buy now</button>
+              <button>
+                <IoCartOutline />
+              </button>
+              <button>
+                <CiHeart />
+              </button>
+              <button>Buy now</button>
             </div>
-            
           </div>
           <div className="descriptionSection">
             <div className="description">
@@ -153,7 +279,6 @@ function ProductSingle() {
             ) : (
               ""
             )}
-
             <div className="authorDescription">
               <span className="authorTitle">
                 {product.authorId.firstName + " " + product.authorId.lastName}{" "}
@@ -163,11 +288,28 @@ function ProductSingle() {
               <div className="authorImage">
                 <img src={product.authorId.image} alt="author image" />
               </div>
-              <span> <span className="dataTitle">Pen Name :</span> <span className="dataSubContent"> {product.authorId.penName}</span></span>
+              <span>
+                {" "}
+                <span className="dataTitle">Pen Name :</span>{" "}
+                <span className="dataSubContent">
+                  {" "}
+                  {product.authorId.penName}
+                </span>
+              </span>
               <br />
-              <span> <span className="dataTitle">Occupation :</span><span className="dataSubContent"> {product.authorId.occupation} </span></span>
+              <span>
+                {" "}
+                <span className="dataTitle">Occupation :</span>
+                <span className="dataSubContent">
+                  {" "}
+                  {product.authorId.occupation}{" "}
+                </span>
+              </span>
               <br />
-              <span> <span className="dataTitle">Notable Works :</span></span>
+              <span>
+                {" "}
+                <span className="dataTitle">Notable Works :</span>
+              </span>
               <br />
               {product.authorId.notableWorks[0]
                 .split(",")
@@ -177,113 +319,113 @@ function ProductSingle() {
                     <br />
                   </span>
                 ))}
-                
               {product.authorId.awards.length > 0 ? (
                 <>
-                  <span><span className="dataTitle">Awards: </span></span>
+                  <span>
+                    <span className="dataTitle">Awards: </span>
+                  </span>
                   <br />
                   {product.authorId.awards.map((award, index) => (
                     <span className="dataContent" key={award._id}>
                       {award.awardTitle + " " + award.awardYear}
                       <br />
                     </span>
-                    
                   ))}
                 </>
               ) : (
                 ""
               )}
-              <span className="booksFrom">
-                    Books From This Author
-                </span> <br />
-                <BookSlider books = {product.authorId.books} />
+              <span className="booksFrom">Books From This Author</span> <br />
+              <BookSlider books={product.authorId.books} />
             </div>
             <div className="categoryDescription">
-              <span className="categoryTitle">{product.categoryId.categoryName} (category)</span> <br />
+              <span className="categoryTitle">
+                {product.categoryId.categoryName} (category)
+              </span>{" "}
+              <br />
               <span>{product.categoryId.description}</span>
             </div>
-            <span className="booksFrom">
-                    Books From This Category
-                </span> <br />
-                <BookSlider books = {product.categoryId.books} />
+            <span className="booksFrom">Books From This Category</span> <br />
+            <BookSlider books={product.categoryId.books} />
           </div>
         </div>
         <div className="rightSection">
           <div className="bookOverView">
             <div className="overViewTite">Book Overview</div>
             <div className="overView">
-                <div className="overIcon">
-                    <FaBookOpenReader />
-                </div>
-                <div className="overContent">
-                    <span>Book Title</span> <br />
-                    <span>{product.title}</span>
-                </div>
+              <div className="overIcon">
+                <FaBookOpenReader />
+              </div>
+              <div className="overContent">
+                <span>Book Title</span> <br />
+                <span>{product.title}</span>
+              </div>
             </div>
             <div className="overView">
-                <div className="overIcon">
-                    <CiPen />
-                </div>
-                <div className="overContent">
-                    <span>Author</span> <br />
-                    <span>{product.authorId.firstName + " " + product.authorId.lastName}</span>
-                </div>
+              <div className="overIcon">
+                <CiPen />
+              </div>
+              <div className="overContent">
+                <span>Author</span> <br />
+                <span>
+                  {product.authorId.firstName + " " + product.authorId.lastName}
+                </span>
+              </div>
             </div>
             <div className="overView">
-                <div className="overIcon">
-                    <SiGradleplaypublisher />
-                </div>
-                <div className="overContent">
-                    <span>Publisher</span> <br />
-                    <span>{product.publisherId.publisherName}</span>
-                </div>
+              <div className="overIcon">
+                <SiGradleplaypublisher />
+              </div>
+              <div className="overContent">
+                <span>Publisher</span> <br />
+                <span>{product.publisherId.publisherName}</span>
+              </div>
             </div>
             <div className="overView">
-                <div className="overIcon">
-                    <FiDollarSign />
-                </div>
-                <div className="overContent">
-                    <span>Original price</span> <br />
-                    <span>{product.originalPrice}</span>
-                </div>
+              <div className="overIcon">
+                <FiDollarSign />
+              </div>
+              <div className="overContent">
+                <span>Original price</span> <br />
+                <span>{product.originalPrice}</span>
+              </div>
             </div>
             <div className="overView">
-                <div className="overIcon">
-                    <FiDollarSign />
-                </div>
-                <div className="overContent">
-                    <span>Discount</span> <br />
-                    <span>{product.discount}</span>
-                </div>
+              <div className="overIcon">
+                <FiDollarSign />
+              </div>
+              <div className="overContent">
+                <span>Discount</span> <br />
+                <span>{product.discount}</span>
+              </div>
             </div>
             <div className="overView">
-                <div className="overIcon">
-                    <BiCategory />
-                </div>
-                <div className="overContent">
-                    <span>Category</span> <br />
-                    <span>{product.categoryId.categoryName}</span>
-                </div>
+              <div className="overIcon">
+                <BiCategory />
+              </div>
+              <div className="overContent">
+                <span>Category</span> <br />
+                <span>{product.categoryId.categoryName}</span>
+              </div>
             </div>
             <div className="overView">
-                <div className="overIcon">
-                    <RiPagesLine />
-                </div>
-                <div className="overContent">
-                    <span>Pages</span> <br />
-                    <span>{product.pages}</span>
-                </div>
+              <div className="overIcon">
+                <RiPagesLine />
+              </div>
+              <div className="overContent">
+                <span>Pages</span> <br />
+                <span>{product.pages}</span>
+              </div>
             </div>
             <div className="overView">
-                <div className="overIcon">
-                    <CiCalendarDate />
-                </div>
-                <div className="overContent">
-                    <span>Published date</span> <br />
-                    <span>{product.publicationDate.split("T")[0]}</span>
-                </div>
+              <div className="overIcon">
+                <CiCalendarDate />
+              </div>
+              <div className="overContent">
+                <span>Published date</span> <br />
+                <span>{product.publicationDate.split("T")[0]}</span>
+              </div>
             </div>
-            
           </div>
           <div className="loompanicsSection">
             <img className="loompanicsImage" alt="logo image" src={logo} />

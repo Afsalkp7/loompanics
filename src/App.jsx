@@ -13,6 +13,7 @@ import Shop from "./components/shop/Shop";
 import ProductSingle from "./components/shop/ProductSingle";
 import ScrollToTop from "./components/layout/ScrollTop";
 import NetworkStatus from "./components/layout/NetworkStatus ";
+import NotFound from "./components/layout/NotFound";
 
 function App() {
   return (
@@ -79,6 +80,7 @@ function App() {
                 }
               />
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
     </>

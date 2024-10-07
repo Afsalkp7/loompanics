@@ -74,6 +74,10 @@
     height: 200px;
     border-radius: 10px;
 }
+.skelton{
+    height: 100%;
+    width: 100%;
+}
 .productDetails{
     width: 100%;
     display: flex;

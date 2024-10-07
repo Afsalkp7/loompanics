@@ -6,6 +6,7 @@ import { FaAngleDown } from "react-icons/fa";
 import ProductList from "./ProductList"; // Ensure this component lists your products
 import API from "../../utils/api"; // Your API utility for making requests
 import SortDropdown from "./SortDropdown";
+import Error from "../layout/Error";
 
 function Shop() {
   const [isOpenSideBar, setIsOpenSideBar] = useState(false);
@@ -191,7 +192,7 @@ function Shop() {
       </div>
       <ProductList products={products}/>
   </div>;
-  if (error) return <div>{error}</div>;
+  if (error) return <div><Error errorMessage={error} /></div>;
 
   return (
     <>

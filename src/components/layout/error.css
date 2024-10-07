@@ -1,0 +1,17 @@
+.errorMain {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.errorDiv{
+    position: relative;
+}
+.errorMessage{
+    position: absolute;
+    top: 60px;
+    left: 80px;
+    width: 150px;
+    font-weight: bold;
+    color: red;
+}
