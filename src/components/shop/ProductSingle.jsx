@@ -15,7 +15,6 @@ import { RiPagesLine } from "react-icons/ri";
 import { CiCalendarDate } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
-
 import { IoIosGlobe } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import API from "../../utils/api";
@@ -24,7 +23,11 @@ import BookSlider from "./BookSlider";
 import Skeleton from "react-loading-skeleton";
 import NotFound from "../layout/NotFound";
 import Error from "../layout/Error";
+import { useDispatch } from 'react-redux';
+import { addToCart } from "../../redux/cartSlice.js";
+
 function ProductSingle() {
+  const dispatch = useDispatch();
   const { _id } = useParams(); // Capture the product ID from the URL
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -45,7 +48,9 @@ function ProductSingle() {
 
     fetchProduct();
   }, [_id]);
-
+  const handleAddToCart = () => {
+    dispatch(addToCart({ bookId: product._id, quantity: 1 }));
+  };
   if (loading) {
     return (
       <>
@@ -247,7 +252,7 @@ function ProductSingle() {
             </div>
 
             <div className="buttons">
-              <button>
+              <button  onClick={handleAddToCart}>
                 <IoCartOutline />
               </button>
               <button>
@@ -281,7 +286,7 @@ function ProductSingle() {
             )}
             <div className="authorDescription">
               <span className="authorTitle">
-                {product.authorId.firstName + " " + product.authorId.lastName}{" "}
+                {product.authorId.firstName + " " + product.authorId?.lastName}{" "}
                 (Author)
               </span>
               <br />

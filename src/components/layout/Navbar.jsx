@@ -7,15 +7,16 @@ import { HiBars3 } from "react-icons/hi2";
 import { IoCartOutline } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
-
 import logo from '../../assets/logo_without_bg.png';
 import { useNavigate } from 'react-router-dom';
 import BottomNav from './BottomNav';
+import { useSelector } from 'react-redux';
+import { selectCartItemCount } from '../../redux/cartSlice';
 
 function Navbar() {
   const [isOpenBottomNav, setIsOpenBottomNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+  const cartItemCount = useSelector(selectCartItemCount);
   const [activeItem, setActiveItem] = useState("HOME");
   const navigate = useNavigate();
 
@@ -59,7 +60,7 @@ function Navbar() {
         <div className="navItemDiv">
           <ul>
             <li onClick={()=>navigate("/user")}><CiUser /></li>
-            <li className='cart'><IoCartOutline /> <div className="countDiv">5</div> </li>
+            <li className='cart'><IoCartOutline /> <div className="countDiv">{cartItemCount}</div> </li>
             <li onClick={() => setIsOpenBottomNav(!isOpenBottomNav)}><HiBars3 /></li>
           </ul>
         </div>
