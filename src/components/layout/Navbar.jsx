@@ -17,14 +17,7 @@ function Navbar() {
   const [isOpenBottomNav, setIsOpenBottomNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const cartItemCount = useSelector(selectCartItemCount);
-  const [activeItem, setActiveItem] = useState("HOME");
   const navigate = useNavigate();
-
-  // Function to handle navigation and setting the active item
-  const handleNavigation = (item, path) => {
-    setActiveItem(item);
-    navigate(path);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
