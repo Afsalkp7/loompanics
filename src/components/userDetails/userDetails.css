@@ -1,0 +1,113 @@
+.userDetailMain {
+    margin-top: 80px;
+    min-height: 80vh;
+    display: flex;
+    padding: 100px;
+    gap: 50px;
+}
+.userDetailRight {
+    width: 100%;
+    flex: 1;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    border-radius: 5px;
+}
+.userDetailLeft {
+    width: 100%;
+    flex: 2;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    border-radius: 5px;
+}
+.userPrimaryData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 10px;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.212); */
+}
+.userIcon {
+    font-size: 24px;
+    font-weight: bold;
+    background: #74788d52;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 40px;
+}
+.userName {
+    font-weight: bold;
+}
+.userEmail {
+    font-size: 14px;
+}
+.profileOverView {
+    width: 100%;
+    align-items: start;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.profileOverviewHead {
+    font-size: 16px;
+    font-weight: bold;
+}
+.profileDataItems {
+    display: flex;
+    gap: 5px;
+    font-weight: 600;
+}
+.profileDataItems span{
+    font-weight: 200;
+}
+.profileDataButtons {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    margin-top: 5px;
+}
+.logoutButton{
+    background: #dd6969;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.changePassButton{
+    background: #74788d52;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.changePassButton:hover{
+    background: #74788d94;
+}
+.logoutButton:hover {
+    background: #dd6969b9;
+}
+.confirmBtn, .cancelBtn {
+    padding: 8px 12px;
+    margin-right: 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .confirmBtn {
+    background-color: #74788d52;
+    color: white;
+  }
+  
+  .cancelBtn {
+    background-color: white;
+    color: rgb(0, 0, 0);
+  }
+  
