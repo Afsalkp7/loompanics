@@ -1,0 +1,109 @@
+.addresses {
+  margin: 20px;
+}
+.addresses span {
+  font-size: 16px;
+  font-weight: 600;
+}
+/* .addressesList{
+
+} */
+.addAddressButton {
+  margin: 30px;
+  background: #acabab67;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Overlay to cover the screen */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Popup box styling */
+.popup {
+  background-color: white;
+  padding: 20px;
+  width: 450px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-group {
+  flex: 1; /* Ensure fields grow equally */
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.submit-button,
+.close-button {
+  margin-right: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.close-button {
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #acabab67;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+}
+form button {
+  border-radius: 5px;
+}
+.addressListItem{
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    padding: 30px;
+    background: #acabab67;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.addressButtons {
+    display: flex;
+    gap: 10px;
+}
+.addressIcon {
+    height: 30px;
+    width: 30px;
+    background: #acabab67;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}

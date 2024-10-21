@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../redux/authSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Membership from "./Membership";
+import Addresses from "./Addresses";
 
 const UserDetails = () => {
   const dispatch = useDispatch();
@@ -79,7 +81,9 @@ const UserDetails = () => {
             <button className="profileDataButtons changePassButton">Change password</button>
           </div>
         </div> 
-        <div className="userDetailLeft"></div> 
+        <div className="userDetailLeft">
+            <Membership />
+        </div> 
       </div>
     </>
     );
@@ -111,7 +115,10 @@ const UserDetails = () => {
           <button className="profileDataButtons changePassButton">Change password</button>
         </div>
       </div>
-      <div className="userDetailLeft"></div>
+      <div className="userDetailLeft">
+      <Membership userData={userData}/>
+      <Addresses />
+      </div>
     </div>
   </>
   );

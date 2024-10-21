@@ -1,0 +1,23 @@
+.membership{
+    margin: 20px;
+}
+.membership span{
+    font-size: 16px;
+    font-weight: 600;
+}
+.membershipCard{
+    margin: 30px;
+    height: 250px;
+    width: 200px;
+    background: #acabab67;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.membershipCard span{
+    text-align: center;
+    font-weight: 100;
+}
+/* .membershipButtons{}
+.printButton{}
+.editButton{} */
