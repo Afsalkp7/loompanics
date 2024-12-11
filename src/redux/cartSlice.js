@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../utils/api';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 
 // Async thunk to handle adding to cart
@@ -16,6 +16,20 @@ export const addToCart = createAsyncThunk(
                 error.response && error.response.data.message
                     ? error.response.data.message
                     : error.message
+            );
+        }
+    }
+);
+
+export const fetchCartItems = createAsyncThunk(
+    'cart/fetchCartItems',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await API.get('/cart');
+            return data.cartItems;
+        } catch (error) {
+            return rejectWithValue(
+                error.response?.data?.message || error.message
             );
         }
     }
@@ -45,7 +59,18 @@ const cartSlice = createSlice({
             .addCase(addToCart.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
-            });
+            })
+            .addCase(fetchCartItems.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(fetchCartItems.fulfilled, (state, action) => {
+                state.loading = false;
+                state.cartItems = action.payload;
+            })
+            .addCase(fetchCartItems.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
     },
 });
 

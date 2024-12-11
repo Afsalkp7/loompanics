@@ -14,6 +14,7 @@ import ProductSingle from "./components/shop/ProductSingle";
 import ScrollToTop from "./components/layout/ScrollTop";
 import NetworkStatus from "./components/layout/NetworkStatus ";
 import NotFound from "./components/layout/NotFound";
+import Cart from "./components/cart/Cart";
 
 function App() {
   return (
@@ -68,6 +69,14 @@ function App() {
                 element={
                   <PrivateRoute>
                     <UserDetails />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/cart"
+                element={
+                  <PrivateRoute>
+                    <Cart />
                   </PrivateRoute>
                 }
               />

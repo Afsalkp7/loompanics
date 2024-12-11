@@ -1,0 +1,57 @@
+.cartHero {
+    margin-top: 120px;
+    padding: 100px;
+}
+.cartHeading {
+    margin-bottom: 30px;
+}
+.cartHeading span {
+    font-size: 30px;
+}
+.mainSection{
+    display: flex;
+}
+.cartSection {
+    flex: 3;
+}
+.checkoutSection {
+    flex: 2;
+}
+.cartItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+    padding: 20px 0 20px 0;
+}
+.cartImage img{
+    width: 100px;
+}
+.itemTitle{
+    align-items: center;
+    justify-content: center;
+}
+.title{
+    font-size: 20px;
+}
+.titleAuthor{
+    font-size: 14px;
+}
+.titleAmount{
+    font-size: 14px;
+}
+.cartCount{
+    display: flex;
+    gap: 10px;
+}
+.amountSection{
+    display: flex;
+    gap: 20px;
+}
+.checkoutSection{
+    padding: 20px ;
+}
+.checkoutTitle  {
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import './navbar.css';
 import { RiWhatsappFill } from "react-icons/ri";
 import { AiFillInstagram } from "react-icons/ai";
 import { TiSocialYoutube } from "react-icons/ti";
 import { HiBars3 } from "react-icons/hi2";
 import { IoCartOutline } from "react-icons/io5";
-import { CiSearch } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import logo from '../../assets/logo_without_bg.png';
 import { useNavigate } from 'react-router-dom';
 import BottomNav from './BottomNav';
-import { useSelector } from 'react-redux';
-import { selectCartItemCount } from '../../redux/cartSlice';
+import { useSelector,useDispatch  } from 'react-redux';
+import { selectCartItemCount, fetchCartItems } from '../../redux/cartSlice';
 
 function Navbar() {
   const [isOpenBottomNav, setIsOpenBottomNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const cartItemCount = useSelector(selectCartItemCount);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(fetchCartItems());
+}, [dispatch]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,7 +57,7 @@ function Navbar() {
         <div className="navItemDiv">
           <ul>
             <li onClick={()=>navigate("/user")}><CiUser /></li>
-            <li className='cart'><IoCartOutline /> <div className="countDiv">{cartItemCount}</div> </li>
+            <li className='cart' onClick={()=>navigate("/cart")}><IoCartOutline /> <div className="countDiv">{cartItemCount}</div> </li>
             <li onClick={() => setIsOpenBottomNav(!isOpenBottomNav)}><HiBars3 /></li>
           </ul>
         </div>

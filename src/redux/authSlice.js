@@ -1,6 +1,6 @@
 // src/redux/authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import API from '../utils/api';
 
 // Async thunk for user registration
