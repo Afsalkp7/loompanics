@@ -57,3 +57,101 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+.cartTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.cartTable th,
+.cartTable td {
+  text-align: center;
+}
+
+
+
+.cartImage {
+  width: 80px;
+}
+
+@media (max-width: 768px) {
+
+
+    .mainSection{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cartTable {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
+    .cartTable thead {
+      display: none;
+    }
+  
+    .cartTable tr {
+      display: block;
+      margin-bottom: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 10px;
+    }
+  
+    .cartTable td {
+      display: block;
+      font-size: 14px;
+      padding: 8px 5px;
+      text-align: right;
+      border: none;
+    }
+  
+    .cartTable td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  
+    .cartImage {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+  }
+  
+
+/* Base styles */
+
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  
+  .table-xs img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  
+  @media (max-width:520px) {
+    .cartHero {
+        margin-top: 120px;
+        padding: 10px;
+    }
+  }
