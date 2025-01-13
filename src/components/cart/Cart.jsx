@@ -1,26 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./cart.css";
-import API from "../../utils/api";
 import { MdOutlineDelete } from "react-icons/md";
 import { Button } from "@chakra-ui/react";
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteCartItem, fetchCartItems } from "../../redux/cartSlice";
+import Error from "../layout/Error";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const dispatch = useDispatch();
+
+  const { cartItems, loading, error } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        const response = await API.get("/cart");
-        if (response.status === 200) {
-          setCartItems(response.data.cartItems);
-        }
-      } catch (error) {
-        console.error("Error fetching cart items:", error);
-      }
-    };
+    dispatch(fetchCartItems());
+  }, [dispatch]);
 
-    fetchCartItems();
-  }, []);
+  const handleDelete = (cartId) => {
+    const deletedItem = cartItems.find(item => item.cartId === cartId);
+    const updatedCartItems = cartItems.filter(item => item.cartId !== cartId);
+    dispatch({ type: 'cart/removeItemOptimistically', payload: updatedCartItems });
+    dispatch(deleteCartItem(cartId))
+    .unwrap() 
+    .catch(() => {
+      dispatch({ type: 'cart/revertItemDeletion', payload: deletedItem });
+    });
+};
+
+if (error) return <Error errorMessage={error}/>
 
   return (
     <div className="cartHero">
@@ -58,7 +64,7 @@ const Cart = () => {
                         />
                         
                           <span className="cartTitle">{item.title} < br/> ₹ {item?.originalPrice}<span  className="deviceQty"> <Button className="qtyDeviceBtn">+</Button><span>{item?.quantity || 1}</span><Button className="qtyDeviceBtn">-</Button> </span></span><br />
-                          <span className="deviceTotal"><span>₹ {parseInt(item?.originalPrice) * parseInt(item?.quantity)} </span><MdOutlineDelete className="deleteButton"/></span>
+                          <span className="deviceTotal"><span>₹ {parseInt(item?.originalPrice) * parseInt(item?.quantity)} </span><MdOutlineDelete onClick={()=>handleDelete(item?.cartId)} className="deleteButton"/></span>
                       </td>
                       <td className="text-right cartCount" title="Amount">
                         <Button>+</Button><span>{item?.quantity || 1}</span><Button>-</Button>
@@ -70,17 +76,17 @@ const Cart = () => {
                         ₹ {parseInt(item?.originalPrice) * parseInt(item?.quantity)}
                       </td>
                       <td className="notInDevice">
-                        <MdOutlineDelete className="deleteButton"/>
+                        <MdOutlineDelete onClick={()=>handleDelete(item?.cartId)} className="deleteButton"/>
                       </td>
                     </tr>
                   ))
-                ) : (
+                ) : loading ? (
                   <tr>
                     <td colSpan="5" className="text-center">
                       No items in the cart.
                     </td>
                   </tr>
-                )}
+                ) : ''}
               </tbody>
             </table>
           </div>

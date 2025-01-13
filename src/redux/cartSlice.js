@@ -35,7 +35,23 @@ export const fetchCartItems = createAsyncThunk(
     }
 );
 
-export const selectCartItemCount = (state) => state.cart.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+// Async thunk to delete a cart item
+export const deleteCartItem = createAsyncThunk(
+    'cart/deleteCartItem',
+    async (cartId, { rejectWithValue }) => {
+        try {
+            const { data } = await API.delete(`/cart`, { data: { cartId } });
+            toast.success(data.message || "Item removed from cart");
+            return cartId;
+        } catch (error) {
+            return rejectWithValue(
+                error.response?.data?.message || error.message
+            );
+        }
+    }
+);
+
+export const selectCartItemCount = (state) => state.cart.cartItems.reduce((acc, item) => acc + 1, 0);
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -45,7 +61,12 @@ const cartSlice = createSlice({
         error: null,
     },
     reducers: {
-        
+        removeItemOptimistically: (state, action) => {
+            state.cartItems = action.payload;
+        },
+        revertItemDeletion: (state, action) => {
+            state.cartItems.push(action.payload);
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -71,7 +92,22 @@ const cartSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
+            .addCase(deleteCartItem.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(deleteCartItem.fulfilled, (state, action) => {
+                state.loading = false;
+                state.cartItems = state.cartItems.filter(
+                    (item) => item._id !== action.payload
+                );
+            })
+            .addCase(deleteCartItem.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            });
+
     },
 });
 
+export const { removeItemOptimistically } = cartSlice.actions;
 export default cartSlice.reducer;
