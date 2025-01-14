@@ -5,7 +5,9 @@ import CategorySection from "./CategorySection";
 import BooksSection from "./BooksSection";
 import HowToRead from "./HowToRead";
 import BrowseBooksSection from "./BrowseBooksSection";
+import { useNavigate } from "react-router-dom";
 function Home() {
+  const navigate = useNavigate()
   return (
     <>
       <div className="hero">
@@ -16,7 +18,7 @@ function Home() {
               Find books, create membership and take your favourite<br/>
               books.Carefully Buy after analyzing the needs of different geners.
             </span><br />
-          <button className="heroTextBtn">Explore Books World</button>
+          <button className="heroTextBtn" onClick={()=>navigate('/books')}>Explore Books World</button>
         </div>
         <div className="HeroImage">
           <img src={bookReadingKids} alt="Book reading kids" />

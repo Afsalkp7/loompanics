@@ -4,6 +4,7 @@
     display: flex;
     padding: 100px;
     gap: 50px;
+    flex-wrap: wrap;
 }
 .userDetailRight {
     width: 100%;
@@ -111,3 +112,17 @@
     color: rgb(0, 0, 0);
   }
   
+  @media (max-width:585px){
+    .userDetailMain{
+        padding: 20px;
+    }
+  }
+
+  @media (max-width: 358px) {
+    .profileDataItems span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+  }

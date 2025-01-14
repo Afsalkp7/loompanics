@@ -209,4 +209,9 @@
       }
   }
 
-  
+  /* @media (max-width:585px) {
+    .shopMain {
+      display: none !important;
+    }
+
+  } */
