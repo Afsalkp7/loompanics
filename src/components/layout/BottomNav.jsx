@@ -34,6 +34,9 @@ function BottomNav({ isOpenBottomNav, setIsOpenBottomNav, scrolled }) {
 
   const handleNavigation = (item, path) => {
     setActiveItem(item);
+    if (window.innerWidth < 585) {
+      setIsOpenBottomNav(!isOpenBottomNav);
+    }
     navigate(path);
   };
 

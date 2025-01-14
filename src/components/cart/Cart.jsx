@@ -3,8 +3,9 @@ import "./cart.css";
 import { MdOutlineDelete } from "react-icons/md";
 import { Button } from "@chakra-ui/react";
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteCartItem, fetchCartItems } from "../../redux/cartSlice";
+import { deleteCartItem, fetchCartItems, updateCartItemQuantity } from "../../redux/cartSlice";
 import Error from "../layout/Error";
+import toast from "react-hot-toast";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,31 @@ const Cart = () => {
       dispatch({ type: 'cart/revertItemDeletion', payload: deletedItem });
     });
 };
+
+const handleIncrement = (cartId, currentQuantity) => {
+  if(currentQuantity < 5) {
+    const newQuantity = parseInt(currentQuantity) + 1;
+    dispatch(updateCartItemQuantity({ cartId, quantity: newQuantity }));
+  } else {
+    toast.error("Maximum 5 quantity allowed at a time for the same item");
+  }
+  
+};
+
+const handleDecrement = (cartId, currentQuantity) => {
+  if (currentQuantity > 1) { 
+    const newQuantity = parseInt(currentQuantity) - 1;
+    dispatch(updateCartItemQuantity({ cartId, quantity: newQuantity }));
+  } else {
+    toast.error("Quantity cannot be less than 1");
+  }
+};
+
+  // Dynamic Calculation Logic
+  const subTotal = cartItems.reduce((sum, item) => sum + parseInt(item.originalPrice) * parseInt(item.quantity), 0);
+  const discount = cartItems.reduce((sum, item) => sum + parseInt(item.discount) * parseInt(item.quantity), 0);
+  const deliveryCharge = subTotal > 1000 ? 0 : subTotal > 500 ? 50 : 60;
+  const orderTotal = subTotal - discount + deliveryCharge;
 
 if (error) return <Error errorMessage={error}/>
 
@@ -63,11 +89,11 @@ if (error) return <Error errorMessage={error}/>
                           className="cartItemImageDevice"
                         />
                         
-                          <span className="cartTitle">{item.title} < br/> ₹ {item?.originalPrice}<span  className="deviceQty"> <Button className="qtyDeviceBtn">+</Button><span>{item?.quantity || 1}</span><Button className="qtyDeviceBtn">-</Button> </span></span><br />
+                          <span className="cartTitle">{item.title} < br/> ₹ {item?.originalPrice}<span  className="deviceQty"><Button className="qtyDeviceBtn" onClick={()=>handleDecrement(item.cartId,item.quantity)}>-</Button><span>{item?.quantity || 1}</span> <Button className="qtyDeviceBtn" onClick={()=>handleIncrement(item.cartId,item.quantity)}>+</Button> </span></span><br />
                           <span className="deviceTotal"><span>₹ {parseInt(item?.originalPrice) * parseInt(item?.quantity)} </span><MdOutlineDelete onClick={()=>handleDelete(item?.cartId)} className="deleteButton"/></span>
                       </td>
                       <td className="text-right cartCount" title="Amount">
-                        <Button>+</Button><span>{item?.quantity || 1}</span><Button>-</Button>
+                        <Button onClick={()=>handleDecrement(item.cartId,item.quantity)}>-</Button><span>{item?.quantity || 1}</span><Button onClick={()=>handleIncrement(item.cartId,item.quantity)}>+</Button>
                       </td>
                       {/* <td className="text-right" title="Price">
                         ₹ {item?.originalPrice}
@@ -98,22 +124,22 @@ if (error) return <Error errorMessage={error}/>
               <tbody>
                 <tr>
                   <td>Subtotal</td>
-                  <td className="price">₹ 988 /-</td>
+                  <td className="price">₹ {subTotal} /-</td>
                 </tr>
                 <tr>
                   <td>Discount</td>
-                  <td className="price">₹ 100 /-</td>
+                  <td className="price">₹ {discount} /-</td>
                 </tr>
                 <tr>
                   <td>Delivery Charge</td>
-                  <td className="price">₹ 40 /-</td>
+                  <td className="price">₹ {deliveryCharge} /-</td>
                 </tr>
                 <tr className="totalRow">
                   <td>
                     <strong>Order Total</strong>
                   </td>
                   <td className="price">
-                    <strong>₹ 928 /-</strong>
+                    <strong>₹ {orderTotal} /-</strong>
                   </td>
                 </tr>
               </tbody>

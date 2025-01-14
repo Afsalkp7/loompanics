@@ -46,6 +46,7 @@
     width: 100%;
     display: flex;
     padding: 50px;
+    margin-top: 30px;
 }
 .leftSection{
     flex: 2 ;
@@ -86,23 +87,19 @@
     gap: 10px;
 }
 .price{
-    background: #ffffff;
-    text-align: center;
-    /* border: 0.2px solid rgba(0, 0, 0, 0.397); */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    height: 60px;
-    width: 100px;
-    border-radius: 10px;
+    text-align: start;
+    margin-bottom: 10px;
 }
 .price span{
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
 }
-.offerPrice{
-    color : green
+.discountAknowledgment {
+    font-size: 12px !important;
 }
+
 .ogPrice{
-    color: red;
+    color: rgb(0, 0, 0);
 }
 .category{
     background: #ffffff;
@@ -351,18 +348,18 @@
   .buttons{
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    /* gap: 20px; */
     width: auto;
-    margin-top: 10px;
-    padding: 10px 0px;
+    /* margin-top: 10px; */
+    /* padding: 10px 0px; */
   }
   .buttons button{
     padding: 10px;
-    background: #ffffff;
-    color: rgb(0, 0, 0);
+    background: #000000;
+    color: rgb(255, 255, 255);
     /* border: 1px solid black; */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+    /* border-radius: 10px; */
   }
   .buttons button:hover{
     background: #88888888;

@@ -183,12 +183,12 @@ function ProductSingle() {
 
   return (
     <>
-      <div className="shopMain">
+      {/* <div className="shopMain">
         <div className="shopHero">
           BOOKS <br />
           <span className="shopSubHeading">Home &gt; Books </span>
         </div>
-      </div>
+      </div> */}
       <div className="productSingleMain">
         <div className="leftSection">
           <div className="leftHeroSection">
@@ -216,10 +216,10 @@ function ProductSingle() {
             <span className="productAuthor">
               {product.authorId.firstName + " " + product.authorId.lastName}
             </span>
-            <RatingComponent />
+            {/* <RatingComponent /> */}
 
             <div className="productDetails">
-              <div className="price offerPrice">
+              {/* <div className="price offerPrice">
                 <span>Offer Price</span> <br />
                 <span>
                   ₹{" "}
@@ -232,7 +232,7 @@ function ProductSingle() {
               <div className="price ogPrice">
                 <span>Original Price</span> <br />
                 <span>₹ {product.originalPrice} /-</span>
-              </div>
+              </div> */}
 
               {/* <div className="category">
                 <span>Category</span>
@@ -249,6 +249,9 @@ function ProductSingle() {
                 <span>Edition</span> <br />
                 <span>{product.edition}</span>
               </div> */}
+              <div className="price ogPrice">
+                <span>₹ {product.originalPrice} /-</span><br/>{product.discount && <span className="discountAknowledgment">Buy Now and get ₹ {product.discount} /- Extra discount</span>}
+              </div>
             </div>
 
             <div className="buttons">
