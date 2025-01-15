@@ -6,6 +6,7 @@ import BooksSection from "./BooksSection";
 import HowToRead from "./HowToRead";
 import BrowseBooksSection from "./BrowseBooksSection";
 import { useNavigate } from "react-router-dom";
+import Poster from "../../poster/Poster";
 function Home() {
   const navigate = useNavigate()
   return (
@@ -24,7 +25,8 @@ function Home() {
           <img src={bookReadingKids} alt="Book reading kids" />
         </div>
       </div>
-      <CategorySection />
+      {/* <CategorySection /> */}
+      <Poster />
       <BooksSection />
       <HowToRead />
       <BrowseBooksSection />
