@@ -24,11 +24,14 @@
     scroll-snap-align: start; /* Align each item to the start when scrolling */
     width: 300px; /* Fixed width for each poster */
     height: 350px;
+    border-radius: 15px;
   }
   
   .poster-item img {
     width: 100%;
     height: 100%;
+    border-radius: 15px;
+
   }
   
   .categoryHead {
