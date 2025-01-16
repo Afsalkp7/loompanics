@@ -116,6 +116,16 @@
     .userDetailMain{
         padding: 20px;
     }
+    .userDetailRight {
+        
+        border: none;
+       
+    }
+    .userDetailLeft {
+        
+        border: none;
+        
+    }
   }
 
   @media (max-width: 358px) {
@@ -126,3 +136,4 @@
       max-width: 200px;
     }
   }
+  
