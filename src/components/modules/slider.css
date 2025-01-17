@@ -1,50 +1,35 @@
-/* 
-.poster-container {
+.slider-container {
     display: flex;
     gap: 20px;
     padding-left:10px;
     padding-right:10px;
-    overflow-x: scroll;
-    
+    overflow-x: scroll; /* Allow horizontal scrolling */
+    /* scroll-snap-type: x mandatory; */
     cursor: pointer;
     scroll-behavior: smooth;
     transition: transform 0.3s ease-in-out;
-    -ms-overflow-style: none; 
+    -ms-overflow-style: none;  /* Hide scrollbar in IE and Edge */
     scrollbar-width: none;
   }
   
-  .poster-container:active {
+  .slider-container:active {
     cursor: pointer;
   }
-
-  .poster-item {
+  
+  /* Snap to each slider */
+  .slider-item {
     flex-shrink: 0;
     transition: transform 0.3s ease-in-out;
-    scroll-snap-align: start;
-    width: 300px;
+    scroll-snap-align: start; /* Align each item to the start when scrolling */
+    width: 280px; /* Fixed width for each slider */
     height: 350px;
     border-radius: 15px;
   }
   
-  .poster-item img {
+  .slider-item img {
     width: 100%;
     height: 100%;
     border-radius: 15px;
 
-  } */
-  
-  .categoryHead {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .headMain {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .headSub {
-    font-size: 16px;
-    color: #777;
   }
   

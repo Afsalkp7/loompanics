@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './poster.css';
 import API from '../../utils/api';
+import Slider from '../modules/Slider';
 
 const Poster = () => {
   const [posters, setPosters] = useState([]);
@@ -39,14 +40,15 @@ const Poster = () => {
           you here.
         </span>
       </div>
-      <div className="poster-container">
+      {/* <div className="poster-container">
         {posters.length > 0 &&
           posters.map((poster) => (
             <div key={poster.id} className="poster-item">
               <img src={poster.image} alt={poster.title} />
             </div>
           ))}
-      </div>
+      </div> */}
+      <Slider loading={loading} error={error} data={posters}/>
     </>
   );
 };
