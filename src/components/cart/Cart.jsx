@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteCartItem, fetchCartItems, updateCartItemQuantity } from "../../redux/cartSlice";
 import Error from "../layout/Error";
 import toast from "react-hot-toast";
+import Summery from "../summery/Summery";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -118,34 +119,7 @@ if (error) return <Error errorMessage={error}/>
           </div>
         </div>
         <div className="checkoutSection">
-          <div className="checkoutHead">
-            <h2 className="checkoutTitle">Order Summary</h2>
-            <table className="checkoutTable">
-              <tbody>
-                <tr>
-                  <td>Subtotal</td>
-                  <td className="price">₹ {subTotal} /-</td>
-                </tr>
-                <tr>
-                  <td>Discount</td>
-                  <td className="price">₹ {discount} /-</td>
-                </tr>
-                <tr>
-                  <td>Delivery Charge</td>
-                  <td className="price">₹ {deliveryCharge} /-</td>
-                </tr>
-                <tr className="totalRow">
-                  <td>
-                    <strong>Order Total</strong>
-                  </td>
-                  <td className="price">
-                    <strong>₹ {orderTotal} /-</strong>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <button className="placeOrderButton">Place order</button>
-          </div>
+          <Summery subTotal={subTotal} discount={discount} deliveryCharge={deliveryCharge} orderTotal={orderTotal} buttonType={"Checkout"} buttonLocation={'/checkout'}/>
         </div>
       </div>
     </div>

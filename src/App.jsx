@@ -15,6 +15,7 @@ import ScrollToTop from "./components/layout/ScrollTop";
 import NetworkStatus from "./components/layout/NetworkStatus ";
 import NotFound from "./components/layout/NotFound";
 import Cart from "./components/cart/Cart";
+import Checkout from "./components/checkout/Checkout";
 
 function App() {
   return (
@@ -77,6 +78,14 @@ function App() {
                 element={
                   <PrivateRoute>
                     <Cart />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <PrivateRoute>
+                    <Checkout />
                   </PrivateRoute>
                 }
               />

@@ -25,8 +25,9 @@ function Home() {
           <img src={bookReadingKids} alt="Book reading kids" />
         </div>
       </div>
-      {/* <CategorySection /> */}
+      
       <Poster />
+      <CategorySection />
       <BooksSection />
       <HowToRead />
       <BrowseBooksSection />

@@ -1,0 +1,41 @@
+.checkoutHead {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .checkoutTitle {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkoutTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .checkoutTable td {
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+  }
+  .price {
+    box-shadow:unset !important;
+  }
+
+  .amountSection {
+    display: flex;
+    gap: 20px;
+  }
+
+  .checkoutTitle {
+    font-size: 18px;
+    font-weight: bold;
+  }

@@ -117,7 +117,10 @@ const UserDetails = () => {
       </div>
       <div className="userDetailLeft">
       <Membership userData={userData}/>
-      <Addresses />
+      const subTotal = cartItems.reduce((sum, item) => sum + parseInt(item.originalPrice) * parseInt(item.quantity), 0);
+  const discount = cartItems.reduce((sum, item) => sum + parseInt(item.discount) * parseInt(item.quantity), 0);
+  const deliveryCharge = subTotal > 1000 ? 0 : subTotal > 500 ? 50 : 60;
+  const orderTotal = subTotal - discount + deliveryCharge;
       </div>
     </div>
   </>
