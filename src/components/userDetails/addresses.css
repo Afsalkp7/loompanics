@@ -10,6 +10,8 @@
 } */
 .addAddressButton {
   margin: 30px;
+  padding: 10px;
+  border-radius: 10px;
   background: #acabab67;
   display: flex;
   justify-content: center;
@@ -97,6 +99,12 @@ form button {
 .addressButtons {
     display: flex;
     gap: 10px;
+}
+.checkoutAddress{
+  border: 1px solid black;
+}
+.radioButton{
+  display: none;
 }
 .addressIcon {
     height: 30px;

@@ -6,6 +6,7 @@ import {
   MdOutlineCall,
   MdOutlineMailOutline,
 } from "react-icons/md";
+import { toast } from 'react-hot-toast';
 import { FaBookOpenReader } from "react-icons/fa6";
 import { CiPen } from "react-icons/ci";
 import { SiGradleplaypublisher } from "react-icons/si";
@@ -16,17 +17,19 @@ import { CiCalendarDate } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { IoIosGlobe } from "react-icons/io";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import API from "../../utils/api";
 import logo from "../../assets/logo_without_bg.png";
 import BookSlider from "./BookSlider";
 import Skeleton from "react-loading-skeleton";
 import NotFound from "../layout/NotFound";
 import Error from "../layout/Error";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from "../../redux/cartSlice.js";
 
 function ProductSingle() {
+  const { cartItems } = useSelector((state) => state.cart);
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const { _id } = useParams(); // Capture the product ID from the URL
   const [product, setProduct] = useState(null);
@@ -49,8 +52,19 @@ function ProductSingle() {
     fetchProduct();
   }, [_id]);
   const handleAddToCart = () => {
-    dispatch(addToCart({ bookId: product._id, quantity: 1 }));
+    const isAlreadyInCart = cartItems.some((item) => item.bookId === product._id);
+    if (isAlreadyInCart) {
+      toast.error("This item is already in your cart.");
+    } else {
+      dispatch(addToCart({ bookId: product._id, quantity: 1 }));
+    }
+    // dispatch(addToCart({ bookId: product._id, quantity: 1 }));
   };
+
+  const handleBuyNow = () => {
+    navigate(`/checkout?productId=${product._id}`);
+  };
+
   if (loading) {
     return (
       <>
@@ -261,7 +275,7 @@ function ProductSingle() {
               <button>
                 <CiHeart />
               </button>
-              <button>Buy now</button>
+              <button onClick={handleBuyNow}>Buy now</button>
             </div>
           </div>
           <div className="descriptionSection">

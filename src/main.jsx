@@ -18,7 +18,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           style: {
             background: '#333',
             color: '#fff',
-          }
+          },
+          duration: 700
         }}/>
       </ChakraProvider>
     </Provider>

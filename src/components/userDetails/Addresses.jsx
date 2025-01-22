@@ -3,8 +3,9 @@ import "./addresses.css";
 import API from "../../utils/api";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { MdDeleteOutline } from "react-icons/md";
+import { border } from "@chakra-ui/react";
 
-const Addresses = () => {
+const Addresses = ({ isCheckout = false, onAddressSelect }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [addressData, setAddressData] = useState([]);
   const [isEditMode, setIsEditMode] = useState(false); // To track if it's add or edit mode
@@ -139,15 +140,33 @@ const Addresses = () => {
     setIsPopupOpen(false);
   };
 
+  const handleSelectAddress = (id) => {
+    setSelectedAddressId(id);
+    if (onAddressSelect) {
+      onAddressSelect(id);
+    }
+  };
+
   return (
     <>
       <div className="addresses">
-        <span>Addresses</span>
+        <span>{isCheckout ? "Select shipping address" :"Addresses"}</span>
         <br />
         <div className="addressesList">
           {addressData.length > 0 ? (
             addressData.map((address) => (
-              <div className="addressListItem" key={address._id}>
+              <div className={`addressListItem ${selectedAddressId === address._id ? "checkoutAddress" : ''} `}  key={address._id} onClick={()=>{
+                isCheckout ? handleSelectAddress(address._id) : null
+              }}>
+                {isCheckout && (
+                  <input
+                    className="radioButton"
+                    type="radio"
+                    name="selectedAddress"
+                    checked={selectedAddressId === address._id}
+                    onChange={() => handleSelectAddress(address._id)}
+                  />
+                )}
                 <div className="addressIcon">
                 {address?.firstName
                     ? address.firstName.split("").slice(0, 2).join("")
