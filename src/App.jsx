@@ -16,6 +16,7 @@ import NetworkStatus from "./components/layout/NetworkStatus ";
 import NotFound from "./components/layout/NotFound";
 import Cart from "./components/cart/Cart";
 import Checkout from "./components/checkout/Checkout";
+import Status from "./components/status/Status";
 
 function App() {
   return (
@@ -86,6 +87,14 @@ function App() {
                 element={
                   <PrivateRoute>
                     <Checkout />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/orderstatus/:id"
+                element={
+                  <PrivateRoute>
+                    <Status />
                   </PrivateRoute>
                 }
               />

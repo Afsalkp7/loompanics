@@ -39,3 +39,12 @@
     font-size: 18px;
     font-weight: bold;
   }
+
+  .buttonDisable {
+    background-color: #ccc; /* Gray background */
+    color: #666; /* Dimmed text */
+    cursor: not-allowed; /* Show a disabled cursor */
+    pointer-events: none; /* Prevent any interaction */
+    opacity: 0.6; /* Slightly transparent */
+  }
+  

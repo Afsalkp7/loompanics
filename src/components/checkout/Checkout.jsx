@@ -21,6 +21,9 @@ function Checkout() {
     deliveryCharge: 0,
     orderTotal: 0,
   });
+  const params = new URLSearchParams(location.search);
+  const productId = params.get("productId");
+
 
   // Fetch cart items on mount
   useEffect(() => {
@@ -29,9 +32,6 @@ function Checkout() {
 
   // Fetch product details if productId exists
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const productId = params.get("productId");
-
     const fetchProductDetails = async (id) => {
       try {
         const response = await API.get(`/shop/${id}`);
@@ -101,6 +101,8 @@ function Checkout() {
             deliveryCharge={orderSummary.deliveryCharge}
             orderTotal={orderSummary.orderTotal}
             buttonType={"Place order"}
+            address={selectedAddress || null}
+            productId = { productId || null}
           />
         </div>
       </div>

@@ -26,10 +26,8 @@ const Addresses = ({ isCheckout = false, onAddressSelect }) => {
   useEffect(() => {
     const fetchAddressData = async () => {
       try {
-        // Fetch data from the API
         const response = await API.get("/addresses");
         if (response.status === 200) {
-          // Store the data in the addressData state
           setAddressData(response.data.addresses);
         } else {
           console.error("Failed to fetch addresses:", response);
@@ -38,9 +36,10 @@ const Addresses = ({ isCheckout = false, onAddressSelect }) => {
         console.error("Error fetching addresses:", error);
       }
     };
-
-    fetchAddressData(); // Fetch address data on component mount
-  }, [addressData]);
+  
+    fetchAddressData();
+  }, []); // Empty dependency array
+  
 
   // Handle input change
   const handleInputChange = (e) => {
